@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Mohamed Serag E-Commerce — Design Handover</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Lalezar&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+    color: #14201A;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ─── PAGE SECTIONS ─── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 48px 52px;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ─── COVER ─── */
+  .cover {
+    background: linear-gradient(160deg, #16291E 0%, #0E1A13 100%);
+    color: #FAF7EE;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(181,164,92,.2) 0%, transparent 65%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: -150px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(90,143,107,.2) 0%, transparent 65%);
+  }
+  .cover-logo {
+    width: 100px; height: 100px;
+    border-radius: 28px;
+    background: #2A4D38;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800; font-size: 44px;
+    color: #D2C27A;
+    box-shadow: inset 0 0 0 3px rgba(210,194,122,.4), 0 20px 40px -16px rgba(0,0,0,.5);
+    position: relative; z-index: 1;
+  }
+  .cover h1 {
+    font-family: 'Lalezar', sans-serif;
+    font-size: 64px; font-weight: 400;
+    line-height: 1.1;
+    position: relative; z-index: 1;
+  }
+  .cover h1 span { color: #D2C27A; }
+  .cover-meta {
+    font-size: 15px; color: #B9C7B6;
+    display: flex; flex-direction: column; gap: 8px;
+    position: relative; z-index: 1;
+  }
+  .cover-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(181,164,92,.15);
+    border: 1px solid rgba(181,164,92,.4);
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 14px;
+    color: #D2C27A;
+    letter-spacing: 2px;
+    position: relative; z-index: 1;
+  }
+  .cover-line {
+    width: 80px; height: 2px;
+    background: #B5A45C;
+    position: relative; z-index: 1;
+  }
+  .cover-footer {
+    position: absolute;
+    bottom: 48px; left: 52px; right: 52px;
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: rgba(250,247,238,.4);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 1px;
+    z-index: 1;
+  }
+
+  /* ─── CONTENT PAGES ─── */
+  .content { background: #FAF7EE; }
+  .page-header {
+    display: flex; align-items: center; gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #E4DDC6;
+    margin-bottom: 36px;
+  }
+  .page-header-logo {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: #2A4D38;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800; font-size: 20px;
+    color: #D2C27A;
+    flex-shrink: 0;
+  }
+  .page-header-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 11px;
+    color: #6F6329;
+    letter-spacing: 3px;
+  }
+  .page-num {
+    margin-right: auto;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 13px;
+    color: #B5A45C;
+  }
+
+  h2 {
+    font-family: 'Lalezar', sans-serif;
+    font-size: 42px; font-weight: 400;
+    color: #2A4D38;
+    margin-bottom: 8px;
+  }
+  h2 span { color: #B5A45C; }
+  .subtitle {
+    font-size: 16px; color: #5B665F;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  /* ─── CARDS ─── */
+  .page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .page-card {
+    background: #fff;
+    border: 1.5px solid #ECE6D3;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .page-card-num {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: #2A4D38;
+    color: #D2C27A;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800; font-size: 18px;
+    flex-shrink: 0;
+  }
+  .page-card-title {
+    font-weight: 700; font-size: 18px;
+    color: #14201A;
+  }
+  .page-card-file {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    color: #B5A45C;
+    background: #F4EFD6;
+    padding: 3px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    width: fit-content;
+    direction: ltr;
+  }
+  .page-card-desc {
+    font-size: 14px;
+    color: #5B665F;
+    line-height: 1.7;
+  }
+  .page-card-features {
+    list-style: none; padding: 0;
+    display: flex; flex-direction: column; gap: 6px;
+    font-size: 13px; color: #2A4D38;
+  }
+  .page-card-features li::before {
+    content: '✦';
+    color: #B5A45C;
+    margin-left: 8px;
+    font-size: 10px;
+  }
+
+  /* ─── DESIGN SYSTEM ─── */
+  .color-row {
+    display: flex; gap: 14px;
+    margin-bottom: 24px;
+  }
+  .color-swatch {
+    flex: 1;
+    height: 72px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .font-sample {
+    background: #fff;
+    border: 1.5px solid #ECE6D3;
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .font-name {
+    font-size: 13px; color: #6F6329;
+    font-weight: 600;
+    min-width: 120px;
+  }
+  .font-preview {
+    font-size: 28px; color: #14201A;
+  }
+
+  /* ─── TECH ─── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .tech-item {
+    background: #fff;
+    border: 1.5px solid #ECE6D3;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .tech-item-title {
+    font-weight: 700; font-size: 15px;
+    color: #2A4D38;
+    margin-bottom: 6px;
+  }
+  .tech-item-desc {
+    font-size: 13px; color: #5B665F;
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  .page-footer {
+    position: absolute;
+    bottom: 28px; left: 52px; right: 52px;
+    font-size: 11px; color: #B5A45C;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen {
+    body { background: #e8e4d8; }
+    .page {
+      box-shadow: 0 4px 24px rgba(0,0,0,.15);
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ PAGE 1: COVER ═══════════ -->
+<div class="page cover">
+  <div class="cover-badge">DESIGN HANDOVER DOCUMENT</div>
+  <div class="cover-logo">MS</div>
+  <h1>محمد سراج<br><span>ثقة لها تاريخ</span></h1>
+  <div class="cover-line"></div>
+  <div class="cover-meta">
+    <span>Mohamed Serag E-Commerce Prototype</span>
+    <span>UI/UX Design — Interactive Prototype</span>
+  </div>
+  <div class="cover-footer">
+    <span>CONFIDENTIAL</span>
+    <span>OCTOBER 2026</span>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 2: OVERVIEW ═══════════ -->
+<div class="page content">
+  <div class="page-header">
+    <div class="page-header-logo">MS</div>
+    <div class="page-header-text">MOHAMED SERAG</div>
+    <div class="page-num">01</div>
+  </div>
+
+  <h2>نظرة <span>عامة</span></h2>
+  <p class="subtitle">
+    ده بروتوتايب تفاعلي كامل لمتجر محمد سراج للأجهزة الكهربائية والأدوات المنزلية.
+    البروتوتايب بيشمل <strong>8 صفحات</strong> متكاملة، كل صفحة فيها كل التفاصيل والتفاعلات.
+    تقدر تتنقل بين الصفحات زي ما المستخدم الحقيقي هيعمل بالظبط.
+  </p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px">
+    <div style="background:#2A4D38;color:#D2C27A;border-radius:20px;padding:28px 20px;text-align:center">
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:48px;line-height:1">8</div>
+      <div style="font-size:14px;color:#B9C7B6;margin-top:6px">صفحات تفاعلية</div>
+    </div>
+    <div style="background:#B5A45C;color:#14201A;border-radius:20px;padding:28px 20px;text-align:center">
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:48px;line-height:1">100%</div>
+      <div style="font-size:14px;color:#2F2A10;margin-top:6px">تفاعلي ومتصل</div>
+    </div>
+    <div style="background:#2A4D38;color:#D2C27A;border-radius:20px;padding:28px 20px;text-align:center">
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:48px;line-height:1">RTL</div>
+      <div style="font-size:14px;color:#B9C7B6;margin-top:6px">دعم كامل للعربي</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:20px;color:#2A4D38;margin-bottom:16px;font-weight:700">رحلة المستخدم</h3>
+  <div style="background:#fff;border:1.5px solid #ECE6D3;border-radius:20px;padding:28px;direction:ltr">
+    <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:#2A4D38">
+      <span style="background:#E9F0E8;padding:8px 16px;border-radius:10px">Home</span>
+      <span style="color:#B5A45C">→</span>
+      <span style="background:#E9F0E8;padding:8px 16px;border-radius:10px">Shop</span>
+      <span style="color:#B5A45C">→</span>
+      <span style="background:#E9F0E8;padding:8px 16px;border-radius:10px">Product</span>
+      <span style="color:#B5A45C">→</span>
+      <span style="background:#F4EFD6;padding:8px 16px;border-radius:10px">Cart</span>
+      <span style="color:#B5A45C">→</span>
+      <span style="background:#F4EFD6;padding:8px 16px;border-radius:10px">Checkout</span>
+      <span style="color:#B5A45C">→</span>
+      <span style="background:#2A4D38;color:#D2C27A;padding:8px 16px;border-radius:10px">Confirmed ✓</span>
+    </div>
+    <div style="text-align:center;margin-top:16px;font-size:12px;color:#8A918C;direction:rtl">
+      بالإضافة لصفحات: تسجيل الدخول + حسابي
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Mohamed Serag — Design Handover</span>
+    <span>Page 1</span>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 3: PAGES 1-4 ═══════════ -->
+<div class="page content">
+  <div class="page-header">
+    <div class="page-header-logo">MS</div>
+    <div class="page-header-text">MOHAMED SERAG</div>
+    <div class="page-num">02</div>
+  </div>
+
+  <h2>الصفحات <span>(1-4)</span></h2>
+  <p class="subtitle">تفصيل كل صفحة ومحتواها ووظيفتها في البروتوتايب.</p>
+
+  <div class="page-grid">
+    <div class="page-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="page-card-num">1</div>
+        <div>
+          <div class="page-card-title">الصفحة الرئيسية</div>
+          <div class="page-card-file">index.html</div>
+        </div>
+      </div>
+      <p class="page-card-desc">صفحة الهبوط الأساسية اللي بتعرض هوية المحل وأهم العروض.</p>
+      <ul class="page-card-features">
+        <li>هيرو سكشن بأنيميشن تفاعلية</li>
+        <li>شريط ماركي متحرك لانهائي</li>
+        <li>8 أقسام رئيسية (ثلاجات، غسالات، شاشات...)</li>
+        <li>عروض الفلاش مع كاونت داون</li>
+        <li>سكشن للتجار (B2B)</li>
+        <li>سكشن "من نحن" مع تايم لاين</li>
+      </ul>
+    </div>
+
+    <div class="page-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="page-card-num">2</div>
+        <div>
+          <div class="page-card-title">المتجر / قائمة المنتجات</div>
+          <div class="page-card-file">shop.html</div>
+        </div>
+      </div>
+      <p class="page-card-desc">صفحة عرض كل المنتجات مع فلاتر وترتيب.</p>
+      <ul class="page-card-features">
+        <li>فلاتر جانبية (ماركة، سعر، تقييم)</li>
+        <li>عرض شبكة منتجات</li>
+        <li>ترتيب حسب السعر / الأحدث</li>
+        <li>صفحات (Pagination)</li>
+      </ul>
+    </div>
+
+    <div class="page-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="page-card-num">3</div>
+        <div>
+          <div class="page-card-title">صفحة المنتج</div>
+          <div class="page-card-file">product.html</div>
+        </div>
+      </div>
+      <p class="page-card-desc">تفاصيل المنتج الكاملة مع صور وأسعار ومواصفات.</p>
+      <ul class="page-card-features">
+        <li>عرض صورة كبيرة للمنتج</li>
+        <li>المواصفات الفنية الكاملة</li>
+        <li>زر إضافة للسلة</li>
+        <li>منتجات مشابهة / مقترحة</li>
+      </ul>
+    </div>
+
+    <div class="page-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="page-card-num">4</div>
+        <div>
+          <div class="page-card-title">السلة</div>
+          <div class="page-card-file">cart.html</div>
+        </div>
+      </div>
+      <p class="page-card-desc">عرض المنتجات المختارة وملخص الطلب.</p>
+      <ul class="page-card-features">
+        <li>قائمة المنتجات في السلة</li>
+        <li>تعديل الكمية أو الحذف</li>
+        <li>ملخص السعر والخصومات</li>
+        <li>زر إتمام الشراء</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Mohamed Serag — Design Handover</span>
+    <span>Page 2</span>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 4: PAGES 5-8 ═══════════ -->
+<div class="page content">
+  <div class="page-header">
+    <div class="page-header-logo">MS</div>
+    <div class="page-header-text">MOHAMED SERAG</div>
+    <div class="page-num">03</div>
+  </div>
+
+  <h2>الصفحات <span>(5-8)</span></h2>
+  <p class="subtitle">باقي صفحات البروتوتايب مع التفاصيل.</p>
+
+  <div class="page-grid">
+    <div class="page-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="page-card-num">5</div>
+        <div>
+          <div class="page-card-title">إتمام الشراء</div>
+          <div class="page-card-file">checkout.html</div>
+        </div>
+      </div>
+      <p class="page-card-desc">صفحة إدخال بيانات الشحن والدفع.</p>
+      <ul class="page-card-features">
+        <li>فورم العنوان وبيانات التوصيل</li>
+        <li>اختيار طريقة الدفع</li>
+        <li>ملخص الطلب النهائي</li>
+        <li>زر تأكيد الطلب</li>
+      </ul>
+    </div>
+
+    <div class="page-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="page-card-num">6</div>
+        <div>
+          <div class="page-card-title">تأكيد الطلب</div>
+          <div class="page-card-file">order-confirmed.html</div>
+        </div>
+      </div>
+      <p class="page-card-desc">صفحة نجاح الطلب مع رقم التتبع.</p>
+      <ul class="page-card-features">
+        <li>رسالة تأكيد بصرية</li>
+        <li>رقم الطلب للتتبع</li>
+        <li>ملخص ما تم شراؤه</li>
+        <li>رابط العودة للتسوق</li>
+      </ul>
+    </div>
+
+    <div class="page-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="page-card-num">7</div>
+        <div>
+          <div class="page-card-title">تسجيل الدخول</div>
+          <div class="page-card-file">login.html</div>
+        </div>
+      </div>
+      <p class="page-card-desc">صفحة تسجيل الدخول أو إنشاء حساب جديد.</p>
+      <ul class="page-card-features">
+        <li>فورم تسجيل الدخول</li>
+        <li>إنشاء حساب جديد</li>
+        <li>استعادة كلمة المرور</li>
+        <li>تسجيل عبر السوشيال ميديا</li>
+      </ul>
+    </div>
+
+    <div class="page-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="page-card-num">8</div>
+        <div>
+          <div class="page-card-title">حسابي</div>
+          <div class="page-card-file">account.html</div>
+        </div>
+      </div>
+      <p class="page-card-desc">لوحة تحكم المستخدم وإدارة حسابه.</p>
+      <ul class="page-card-features">
+        <li>بيانات الحساب الشخصية</li>
+        <li>سجل الطلبات</li>
+        <li>العناوين المحفوظة</li>
+        <li>نقاط الولاء والمكافآت</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Mohamed Serag — Design Handover</span>
+    <span>Page 3</span>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 5: DESIGN SYSTEM ═══════════ -->
+<div class="page content">
+  <div class="page-header">
+    <div class="page-header-logo">MS</div>
+    <div class="page-header-text">MOHAMED SERAG</div>
+    <div class="page-num">04</div>
+  </div>
+
+  <h2>نظام <span>التصميم</span></h2>
+  <p class="subtitle">الألوان والخطوط المستخدمة في كل الصفحات لضمان تناسق الهوية البصرية.</p>
+
+  <h3 style="font-size:18px;color:#2A4D38;margin-bottom:14px;font-weight:700">الألوان الأساسية</h3>
+  <div class="color-row">
+    <div class="color-swatch" style="background:#14201A;color:#B9C7B6">
+      <span>#14201A</span>
+      <span style="font-size:10px;margin-top:2px">Dark Forest</span>
+    </div>
+    <div class="color-swatch" style="background:#2A4D38;color:#D2C27A">
+      <span>#2A4D38</span>
+      <span style="font-size:10px;margin-top:2px">Primary Green</span>
+    </div>
+    <div class="color-swatch" style="background:#B5A45C;color:#14201A">
+      <span>#B5A45C</span>
+      <span style="font-size:10px;margin-top:2px">Gold</span>
+    </div>
+    <div class="color-swatch" style="background:#D2C27A;color:#14201A">
+      <span>#D2C27A</span>
+      <span style="font-size:10px;margin-top:2px">Light Gold</span>
+    </div>
+    <div class="color-swatch" style="background:#FAF7EE;color:#5B665F;border:1px solid #ECE6D3">
+      <span>#FAF7EE</span>
+      <span style="font-size:10px;margin-top:2px">Cream BG</span>
+    </div>
+  </div>
+
+  <div class="color-row">
+    <div class="color-swatch" style="background:#E4572E;color:#fff">
+      <span>#E4572E</span>
+      <span style="font-size:10px;margin-top:2px">Flash/Sale</span>
+    </div>
+    <div class="color-swatch" style="background:#E9F0E8;color:#2A4D38;border:1px solid #d0ddd0">
+      <span>#E9F0E8</span>
+      <span style="font-size:10px;margin-top:2px">Light Green BG</span>
+    </div>
+    <div class="color-swatch" style="background:#F4EFD6;color:#6F6329;border:1px solid #e4ddc6">
+      <span>#F4EFD6</span>
+      <span style="font-size:10px;margin-top:2px">Light Gold BG</span>
+    </div>
+    <div class="color-swatch" style="background:#5B665F;color:#fff">
+      <span>#5B665F</span>
+      <span style="font-size:10px;margin-top:2px">Body Text</span>
+    </div>
+    <div class="color-swatch" style="background:#ECE6D3;color:#6F6329;border:1px solid #d4cdb8">
+      <span>#ECE6D3</span>
+      <span style="font-size:10px;margin-top:2px">Border</span>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;color:#2A4D38;margin-bottom:14px;font-weight:700">الخطوط</h3>
+  <div class="font-sample">
+    <div class="font-name">Lalezar</div>
+    <div class="font-preview" style="font-family:'Lalezar',sans-serif">محمد سراج — ثقة لها تاريخ</div>
+  </div>
+  <div class="font-sample">
+    <div class="font-name">IBM Plex Sans Arabic</div>
+    <div class="font-preview" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:22px">أجهزة كهربائية وأدوات منزلية</div>
+  </div>
+  <div class="font-sample">
+    <div class="font-name">Outfit<br><span style="font-size:11px;color:#8A918C;font-weight:400">للأرقام والعناوين الإنجليزية</span></div>
+    <div class="font-preview" style="font-family:'Outfit',sans-serif;font-weight:800;direction:ltr">1972 • MOHAMED SERAG</div>
+  </div>
+
+  <div class="page-footer">
+    <span>Mohamed Serag — Design Handover</span>
+    <span>Page 4</span>
+  </div>
+</div>
+
+</body>
+</html>
