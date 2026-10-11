@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>إتمام الشراء - محمد سراج</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Lalezar&amp;family=Outfit:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body { margin: 0; }
+* { box-sizing: border-box; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+.navlink { transition: color .2s ease; }
+.navlink:hover { color: #B5A45C; }
+.btn-gold { transition: transform .2s ease, background .2s ease; }
+.btn-gold:hover { transform: translateY(-2px); background: #D2C27A !important; }
+.field:focus { border-color: #2A4D38 !important; box-shadow: 0 0 0 4px rgba(42,77,56,.12); }
+@media (max-width: 860px) { .nav-row { display: none !important; } .hide-m { display: none !important; } }
+</style>
+</helmet>
+
+<div style="width:100%;background:#FAF7EE;color:#14201A;font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;overflow-x:hidden">
+
+<dc-import name="Header" cart-count="3" hint-size="100%,184px"></dc-import>
+
+<section>
+  <div style="max-width:1280px;margin:0 auto;padding:40px 40px 8px;display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between">
+    <h1 style="margin:0;font-family:'Lalezar',sans-serif;font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1;color:#2A4D38">إتمام الشراء</h1>
+    <div style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600">
+      <a href="cart.dc.html" style="display:inline-flex;align-items:center;gap:8px;color:#2A4D38"><span style="width:32px;height:32px;border-radius:50%;background:#E9F0E8;color:#2A4D38;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>السلة</a>
+      <span style="width:34px;height:2px;background:#2A4D38"></span>
+      <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:32px;height:32px;border-radius:50%;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800">2</span>بياناتك</span>
+      <span style="width:34px;height:2px;background:#D8D0B4"></span>
+      <span style="display:inline-flex;align-items:center;gap:8px;color:#5B665F"><span style="width:32px;height:32px;border-radius:50%;border:1.5px solid #D8D0B4;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800">3</span>التأكيد</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div style="max-width:1280px;margin:0 auto;padding:28px 40px 80px;display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start">
+
+    <!-- FORM -->
+    <div style="flex:1 1 640px;min-width:0;display:flex;flex-direction:column;gap:22px">
+
+      <div style="background:#fff;border:1px solid #E7E0C8;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800">1</span><h2 style="margin:0;font-size:22px">بياناتك</h2></div>
+          <div style="font-size:15px;color:#5B665F">عندك حساب؟ <a href="login.dc.html" style="color:#2A4D38;font-weight:700;border-bottom:2px solid #B5A45C">سجّل دخولك</a></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px">
+          <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">الاسم بالكامل<input class="field" type="text" placeholder="الاسم الثلاثي" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+          <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">رقم الموبايل<input class="field" type="tel" placeholder="01xxxxxxxxx" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A;direction:ltr;text-align:right"></label>
+          <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">البريد الإلكتروني <span style="font-weight:400;color:#8A918C">(لإرسال تأكيد الطلب)</span><input class="field" type="email" placeholder="name@email.com" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A;direction:ltr;text-align:right"></label>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E7E0C8;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800">2</span><h2 style="margin:0;font-size:22px">طريقة الاستلام</h2></div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px">
+          <label style="flex:1 1 260px;border:2px solid {{pickupBorder}};background:{{pickupBg}};border-radius:22px;padding:20px;display:flex;gap:14px;align-items:flex-start;cursor:pointer">
+            <input type="radio" name="ship" checked="{{isPickup}}" onChange="{{pickPickup}}" style="width:22px;height:22px;accent-color:#2A4D38;margin:2px 0 0">
+            <span style="display:flex;flex-direction:column;gap:4px"><b style="font-size:17px">استلام من المعرض</b><span style="font-size:14px;color:#5B665F;line-height:1.6">المنصورة · جاهز خلال [المدة]</span><b style="color:#16A34A">مجاناً</b></span>
+          </label>
+          <label style="flex:1 1 260px;border:2px solid {{deliveryBorder}};background:{{deliveryBg}};border-radius:22px;padding:20px;display:flex;gap:14px;align-items:flex-start;cursor:pointer">
+            <input type="radio" name="ship" checked="{{isDelivery}}" onChange="{{pickDelivery}}" style="width:22px;height:22px;accent-color:#2A4D38;margin:2px 0 0">
+            <span style="display:flex;flex-direction:column;gap:4px"><b style="font-size:17px">توصيل لحد البيت</b><span style="font-size:14px;color:#5B665F;line-height:1.6">التكلفة حسب المنطقة</span><b style="color:#6F6329">150 ج.م</b></span>
+          </label>
+        </div>
+      </div>
+
+      <sc-if value="{{isDelivery}}" hint-placeholder-val="{{true}}">
+        <div style="background:#fff;border:1px solid #E7E0C8;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800">3</span><h2 style="margin:0;font-size:22px">عنوان التوصيل</h2></div>
+          <div style="display:flex;flex-wrap:wrap;gap:16px">
+            <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">المحافظة
+              <select class="field" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A">
+                <option>الدقهلية</option><option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option><option>الشرقية</option><option>الغربية</option><option>المنوفية</option><option>دمياط</option><option>كفر الشيخ</option><option>أخرى</option>
+              </select>
+            </label>
+            <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">المدينة / المنطقة<input class="field" type="text" placeholder="مثال: المنصورة" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+            <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">العنوان بالتفصيل<input class="field" type="text" placeholder="الشارع، رقم العمارة، الدور، الشقة" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+            <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">ملاحظات على الطلب <span style="font-weight:400;color:#8A918C">(اختياري)</span><textarea class="field" rows="3" placeholder="علامة مميزة، أو موعد مناسب للتوصيل" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A;resize:vertical"></textarea></label>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="background:#fff;border:1px solid #E7E0C8;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800">{{payStep}}</span><h2 style="margin:0;font-size:22px">طريقة الدفع</h2></div>
+        <label style="border:2px solid #2A4D38;background:#F4F8F3;border-radius:22px;padding:20px;display:flex;gap:14px;align-items:center;cursor:pointer">
+          <input type="radio" name="pay" checked="{{true}}" style="width:22px;height:22px;accent-color:#2A4D38;margin:0">
+          <span style="display:flex;flex-direction:column;gap:4px;flex:1"><b style="font-size:17px">الدفع عند الاستلام</b><span style="font-size:14px;color:#5B665F">ادفع كاش وانت بتستلم طلبك</span></span>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2A4D38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.8"></circle></svg>
+        </label>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <div style="flex:1 1 200px;border:1.5px dashed #D8D0B4;border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;color:#8A918C;font-weight:600"><span>بطاقة بنكية</span><span style="font-size:13px;background:#F4F1E6;padding:4px 12px;border-radius:999px">قريباً</span></div>
+          <div style="flex:1 1 200px;border:1.5px dashed #D8D0B4;border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;color:#8A918C;font-weight:600"><span>محفظة إلكترونية</span><span style="font-size:13px;background:#F4F1E6;padding:4px 12px;border-radius:999px">قريباً</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <aside style="flex:0 1 420px;min-width:300px;display:flex;flex-direction:column;gap:18px">
+      <div style="background:#fff;border:1px solid #E7E0C8;border-radius:30px;padding:28px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-family:'Lalezar',sans-serif;font-size:32px;color:#2A4D38;line-height:1">طلبك</div><a href="cart.dc.html" style="font-size:14px;font-weight:700;color:#2A4D38;border-bottom:2px solid #B5A45C">تعديل</a></div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:14px;align-items:center"><div style="width:62px;height:62px;border-radius:16px;background:#F4F1E6;color:#2A4D38;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 48 48" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="13" y="4" width="22" height="40" rx="3"></rect><path d="M13 20h22M18 10v6M18 25v8"></path></svg></div><div style="flex:1;font-size:15px;line-height:1.5">ثلاجة نوفروست بابين 450 لتر <span style="color:#8A918C">× 1</span></div><b style="font-family:'Outfit',sans-serif;font-size:16px">28,900</b></div>
+          <div style="display:flex;gap:14px;align-items:center"><div style="width:62px;height:62px;border-radius:16px;background:#F4F1E6;color:#2A4D38;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 48 48" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="4" width="30" height="40" rx="4"></rect><circle cx="24" cy="28" r="10"></circle><circle cx="24" cy="28" r="5"></circle><path d="M15 11h8M31 11h2"></path></svg></div><div style="flex:1;font-size:15px;line-height:1.5">غسالة أوتوماتيك فتحة أمامية 8 كجم <span style="color:#8A918C">× 1</span></div><b style="font-family:'Outfit',sans-serif;font-size:16px">24,500</b></div>
+          <div style="display:flex;gap:14px;align-items:center"><div style="width:62px;height:62px;border-radius:16px;background:#F4F1E6;color:#2A4D38;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 48 48" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="40" height="27" rx="3"></rect><path d="M16 42h16M24 35v7"></path></svg></div><div style="flex:1;font-size:15px;line-height:1.5">شاشة سمارت 55 بوصة 4K <span style="color:#8A918C">× 1</span></div><b style="font-family:'Outfit',sans-serif;font-size:16px">21,900</b></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:17px;border-top:1px dashed #D8D0B4;padding-top:18px">
+          <div style="display:flex;justify-content:space-between"><span style="color:#5B665F">المجموع الفرعي</span><span style="font-family:'Outfit',sans-serif;font-weight:700">75,300 ج.م</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#5B665F">الشحن</span><span style="font-weight:700;color:#6F6329">{{shipLabel}}</span></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed #D8D0B4;padding-top:18px">
+          <span style="font-weight:700;font-size:18px">الإجمالي</span>
+          <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;color:#2A4D38;line-height:1">{{totalLabel}} <span style="font-size:15px;font-family:'IBM Plex Sans Arabic',sans-serif;color:#14201A">ج.م</span></span>
+        </div>
+
+        <label style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.7;color:#3C4840;cursor:pointer"><input type="checkbox" checked="{{true}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:2px 0 0;flex:none"><span>موافق على <a href="index.dc.html" style="color:#2A4D38;font-weight:700;border-bottom:1.5px solid #B5A45C">الشروط والأحكام</a> وسياسة الاسترجاع</span></label>
+
+        <a class="btn-gold" href="order-confirmed.dc.html" style="height:60px;border-radius:999px;background:#B5A45C;color:#14201A;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:12px">تأكيد الطلب<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;font-size:14px;color:#3C4840;padding:0 6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A4D38" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>بياناتك محمية، ومش بنشاركها مع أي طرف.</div>
+    </aside>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,430px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+  fmt(n) {
+    return Number(n).toLocaleString('en-US');
+  }
+  renderVals() {
+    const s = this.state || {};
+    const ship = s.ship || 'pickup';
+    const isDelivery = ship === 'delivery';
+    const shipCost = isDelivery ? 150 : 0;
+    return {
+      isPickup: !isDelivery,
+      isDelivery: isDelivery,
+      pickupBorder: !isDelivery ? '#2A4D38' : '#E4DDC6',
+      pickupBg: !isDelivery ? '#F4F8F3' : '#FFFFFF',
+      deliveryBorder: isDelivery ? '#2A4D38' : '#E4DDC6',
+      deliveryBg: isDelivery ? '#F4F8F3' : '#FFFFFF',
+      pickPickup: () => this.setState({ ship: 'pickup' }),
+      pickDelivery: () => this.setState({ ship: 'delivery' }),
+      payStep: isDelivery ? '4' : '3',
+      shipLabel: isDelivery ? '150 ج.م' : 'مجاناً',
+      totalLabel: this.fmt(75300 + shipCost)
+    };
+  }
+}
+</script>
+</body>
+</html>

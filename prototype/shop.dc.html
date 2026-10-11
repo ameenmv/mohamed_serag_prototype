@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>المتجر - محمد سراج</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Lalezar&amp;family=Outfit:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body { margin: 0; }
+* { box-sizing: border-box; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+input, select { font-family: inherit; }
+.navlink { transition: color .2s ease; }
+.navlink:hover { color: #B5A45C; }
+.pcard { transition: transform .25s ease, box-shadow .25s ease; }
+.pcard:hover { transform: translateY(-6px); box-shadow: 0 28px 48px -22px rgba(20,32,26,.4); }
+.btn-gold { transition: transform .2s ease, background .2s ease; }
+.btn-gold:hover { transform: translateY(-2px); background: #D2C27A !important; }
+.round-add { transition: transform .2s ease, background .2s ease; }
+.round-add:hover { transform: scale(1.1); background: #2A4D38 !important; color: #D2C27A !important; }
+@media (max-width: 860px) { .nav-row { display: none !important; } .hide-m { display: none !important; } .side { flex: 1 1 100% !important; } }
+</style>
+</helmet>
+
+<div style="width:100%;background:#FAF7EE;color:#14201A;font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;overflow-x:hidden">
+
+<dc-import name="Header" cart-count="{{cartCount}}" hint-size="100%,184px"></dc-import>
+
+<!-- BREADCRUMB -->
+<div style="background:#fff;border-bottom:1px solid #ECE6D3">
+  <div style="max-width:1280px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;gap:10px;font-size:15px;color:#5B665F">
+    <a class="navlink" href="index.dc.html">الرئيسية</a>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    <span style="color:#14201A;font-weight:600">كل المنتجات</span>
+  </div>
+</div>
+
+<!-- TITLE + PILLS -->
+<section>
+  <div style="max-width:1280px;margin:0 auto;padding:44px 40px 12px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between">
+      <h1 style="margin:0;font-family:'Lalezar',sans-serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2A4D38">الأجهزة الكهربائية</h1>
+      <div style="font-size:16px;color:#5B665F">كل اللي بيتك محتاجه، بضمان وسعر يريّحك</div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px">
+      <sc-for list="{{cats}}" as="c" hint-placeholder-count="6">
+        <button type="button" onClick="{{c.pick}}" style="border:1.5px solid {{c.border}};background:{{c.bg}};color:{{c.fg}};border-radius:999px;padding:10px 22px;font-weight:600;font-size:16px;white-space:nowrap">{{c.label}}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<section>
+  <div style="max-width:1280px;margin:0 auto;padding:28px 40px 72px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+    <!-- SIDEBAR -->
+    <aside class="side" style="flex:0 0 290px;background:#fff;border:1px solid #E7E0C8;border-radius:28px;padding:26px 24px;display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid #ECE6D3">
+        <div style="font-weight:700;font-size:20px">فلترة النتائج</div>
+        <button type="button" onClick="{{clearAll}}" style="border:0;background:#F4F1E6;color:#2A4D38;font-weight:600;font-size:14px;padding:8px 16px;border-radius:999px">مسح الكل</button>
+      </div>
+
+      <div style="padding:18px 0;border-bottom:1px solid #ECE6D3">
+        <div style="font-weight:700;font-size:17px;margin-bottom:10px">العلامة التجارية</div>
+        <sc-for list="{{brands}}" as="b" hint-placeholder-count="7">
+          <label style="display:flex;align-items:center;gap:12px;padding:7px 0;cursor:pointer;font-size:16px">
+            <input type="checkbox" checked="{{b.checked}}" onChange="{{b.toggle}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:0">
+            <span style="flex:1">{{b.name}}</span>
+            <span style="color:#8A918C;font-size:14px;font-family:'Outfit',sans-serif">({{b.count}})</span>
+          </label>
+        </sc-for>
+      </div>
+
+      <div style="padding:18px 0;border-bottom:1px solid #ECE6D3">
+        <div style="font-weight:700;font-size:17px;margin-bottom:14px">السعر</div>
+        <label for="price" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">أقصى سعر</label>
+        <input id="price" type="range" min="8000" max="45000" step="500" value="{{maxPrice}}" onChange="{{setPrice}}" style="width:100%;accent-color:#B5A45C;margin:0">
+        <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:14px;color:#5B665F"><span style="font-family:'Outfit',sans-serif">8,000</span><span>حتى <b style="font-family:'Outfit',sans-serif;color:#2A4D38;font-size:16px">{{maxLabel}}</b> ج.م</span></div>
+      </div>
+
+      <div style="padding:18px 0 4px">
+        <div style="font-weight:700;font-size:17px;margin-bottom:10px">التوافر والعروض</div>
+        <label style="display:flex;align-items:center;gap:12px;padding:7px 0;cursor:pointer;font-size:16px"><input type="checkbox" checked="{{onlySale}}" onChange="{{toggleSale}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:0"><span>عليه خصم</span></label>
+        <label style="display:flex;align-items:center;gap:12px;padding:7px 0;cursor:pointer;font-size:16px"><input type="checkbox" checked="{{inStock}}" onChange="{{toggleStock}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:0"><span>متوفر فقط</span></label>
+      </div>
+
+      <div style="margin-top:14px;background:#16291E;color:#FAF7EE;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Lalezar',sans-serif;font-size:26px;color:#D2C27A;line-height:1.1">تاجر أو صاحب معرض؟</div>
+        <div style="font-size:14px;line-height:1.7;color:#C9D5C6">سجّل كتاجر وشوف أسعار الجملة.</div>
+        <a href="login.dc.html" style="margin-top:6px;align-self:flex-start;color:#D2C27A;font-weight:700;border-bottom:2px solid #B5A45C;padding-bottom:2px">سجّل دلوقتي</a>
+      </div>
+    </aside>
+
+    <!-- RESULTS -->
+    <div style="flex:1 1 640px;min-width:0">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:22px">
+        <div style="font-size:16px;color:#5B665F"><b style="font-family:'Outfit',sans-serif;color:#14201A;font-size:20px">{{count}}</b> نتيجة بحث</div>
+        <label style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600">ترتيب
+          <select value="{{sort}}" onChange="{{setSort}}" style="border:1.5px solid #E4DDC6;background:#fff;border-radius:14px;padding:10px 16px;font-size:15px;color:#14201A;outline:none">
+            <option value="rel">الأنسب</option>
+            <option value="low">السعر: من الأقل للأعلى</option>
+            <option value="high">السعر: من الأعلى للأقل</option>
+            <option value="disc">أعلى خصم</option>
+          </select>
+        </label>
+      </div>
+
+      <sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+        <div style="background:#fff;border:1.5px dashed #D8D0B4;border-radius:28px;padding:64px 24px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+          <div style="font-family:'Lalezar',sans-serif;font-size:36px;color:#2A4D38">مفيش منتجات بالفلاتر دي</div>
+          <div style="color:#5B665F;font-size:17px">جرّب تغيّر الفلاتر أو امسحها كلها.</div>
+          <button type="button" onClick="{{clearAll}}" style="margin-top:8px;border:0;background:#2A4D38;color:#FAF7EE;font-weight:700;font-size:16px;padding:14px 28px;border-radius:999px">مسح الفلاتر</button>
+        </div>
+      </sc-if>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px">
+        <sc-for list="{{products}}" as="p" hint-placeholder-count="6">
+          <article class="pcard" style="background:#fff;border-radius:26px;border:1px solid #E7E0C8;display:flex;flex-direction:column;overflow:hidden">
+            <div style="position:relative;height:230px;background:#F4F1E6;color:#2A4D38">
+              <a href="product.dc.html" aria-label="{{p.name}}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                <sc-if value="{{p.isFridge}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 48 48" width="128" height="128" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="13" y="4" width="22" height="40" rx="3"></rect><path d="M13 20h22M18 10v6M18 25v8"></path></svg></sc-if>
+                <sc-if value="{{p.isWasher}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 48 48" width="128" height="128" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="4" width="30" height="40" rx="4"></rect><circle cx="24" cy="28" r="10"></circle><circle cx="24" cy="28" r="5"></circle><path d="M15 11h8M31 11h2"></path></svg></sc-if>
+                <sc-if value="{{p.isTv}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 48 48" width="128" height="128" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="40" height="27" rx="3"></rect><path d="M16 42h16M24 35v7"></path></svg></sc-if>
+                <sc-if value="{{p.isAc}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 48 48" width="128" height="128" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="40" height="16" rx="3"></rect><path d="M10 21h28M14 32c2 3 2 5 0 8M24 32c2 3 2 5 0 8M34 32c2 3 2 5 0 8"></path></svg></sc-if>
+                <sc-if value="{{p.isCooker}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 48 48" width="128" height="128" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="6" width="34" height="36" rx="3"></rect><path d="M7 16h34"></path><circle cx="14" cy="11" r="1.5"></circle><circle cx="24" cy="11" r="1.5"></circle><circle cx="34" cy="11" r="1.5"></circle><rect x="12" y="22" width="24" height="15" rx="2"></rect></svg></sc-if>
+              </a>
+              <sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}">
+                <span style="position:absolute;top:14px;right:14px;background:#E4572E;color:#fff;font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px">خصم {{p.pct}}%</span>
+              </sc-if>
+              <sc-if value="{{p.soldOut}}" hint-placeholder-val="{{false}}">
+                <span style="position:absolute;top:14px;right:14px;background:#14201A;color:#E8DFB0;font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px">نفد المخزون</span>
+              </sc-if>
+              <button type="button" onClick="{{p.toggleFav}}" aria-label="المفضلة" style="position:absolute;top:10px;left:10px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;display:flex;align-items:center;justify-content:center">
+                <sc-if value="{{p.isFav}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="#E4572E" stroke="#E4572E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></sc-if>
+                <sc-if value="{{p.notFav}}" hint-placeholder-val="{{true}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A4D38" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></sc-if>
+              </button>
+              <sc-if value="{{p.canBuy}}" hint-placeholder-val="{{true}}">
+                <button class="round-add" type="button" onClick="{{p.add}}" aria-label="أضف للسلة" style="position:absolute;bottom:12px;left:12px;width:46px;height:46px;border-radius:50%;border:0;background:#B5A45C;color:#14201A;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+              </sc-if>
+            </div>
+            <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:23px;color:#2A4D38">{{p.priceLabel}}</span><span style="font-size:14px;font-weight:600">ج.م</span>
+                <sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-family:'Outfit',sans-serif;font-size:14px;color:#8A918C;text-decoration:line-through">{{p.oldLabel}}</span></sc-if>
+              </div>
+              <div style="font-size:13px;color:#6F6329;font-weight:600">{{p.brand}}</div>
+              <a href="product.dc.html" style="font-size:16px;line-height:1.6;font-weight:500;color:#14201A">{{p.name}}</a>
+              <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#5B665F;margin-top:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2A4D38" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>الدفع عند الاستلام</div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:44px;display:flex;flex-direction:column;align-items:center;gap:22px">
+        <button type="button" style="border:1.5px solid #2A4D38;background:transparent;color:#2A4D38;font-weight:700;font-size:17px;padding:15px 40px;border-radius:999px">عرض المزيد</button>
+        <div style="display:flex;gap:8px;font-family:'Outfit',sans-serif;font-weight:700">
+          <span style="width:42px;height:42px;border-radius:50%;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center">1</span>
+          <span style="width:42px;height:42px;border-radius:50%;border:1.5px solid #E4DDC6;display:flex;align-items:center;justify-content:center">2</span>
+          <span style="width:42px;height:42px;border-radius:50%;border:1.5px solid #E4DDC6;display:flex;align-items:center;justify-content:center">3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,430px"></dc-import>
+
+<sc-if value="{{showToast}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:50;background:#14201A;color:#FAF7EE;padding:14px 24px;border-radius:999px;display:flex;align-items:center;gap:16px;font-size:16px;box-shadow:0 24px 50px -16px rgba(0,0,0,.6);border:1px solid rgba(210,194,122,.5)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+    <span>تمت إضافة «{{toastName}}» للسلة</span>
+    <a href="cart.dc.html" style="color:#D2C27A;font-weight:700;border-bottom:2px solid #B5A45C">عرض السلة</a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+  products() {
+    return [
+      { id: 1, name: 'ثلاجة نوفروست بابين 450 لتر', brand: 'Samsung', cat: 'fridge', price: 28900, old: 32500, stock: true },
+      { id: 2, name: 'ثلاجة ديفروست 350 لتر', brand: 'Toshiba', cat: 'fridge', price: 19800, old: 0, stock: true },
+      { id: 3, name: 'ثلاجة نوفروست ديجيتال 400 لتر', brand: 'LG', cat: 'fridge', price: 31500, old: 34900, stock: true },
+      { id: 4, name: 'ثلاجة ديفروست 14 قدم', brand: 'Fresh', cat: 'fridge', price: 17200, old: 0, stock: true },
+      { id: 5, name: 'غسالة أوتوماتيك فتحة أمامية 8 كجم', brand: 'LG', cat: 'washer', price: 24500, old: 27000, stock: true },
+      { id: 6, name: 'غسالة أوتوماتيك 10 كجم إنفرتر', brand: 'Samsung', cat: 'washer', price: 29900, old: 0, stock: true },
+      { id: 7, name: 'غسالة نصف أوتوماتيك 7 كجم', brand: 'Tornado', cat: 'washer', price: 9800, old: 11200, stock: true },
+      { id: 8, name: 'شاشة سمارت 55 بوصة 4K', brand: 'Samsung', cat: 'tv', price: 21900, old: 24500, stock: true },
+      { id: 9, name: 'شاشة 43 بوصة Full HD', brand: 'Sharp', cat: 'tv', price: 11900, old: 0, stock: true },
+      { id: 10, name: 'شاشة QLED سمارت 65 بوصة', brand: 'LG', cat: 'tv', price: 38900, old: 42000, stock: true },
+      { id: 11, name: 'تكييف سبليت 1.5 حصان إنفرتر', brand: 'Sharp', cat: 'ac', price: 26900, old: 29500, stock: true },
+      { id: 12, name: 'تكييف سبليت 2.25 حصان بارد ساخن', brand: 'Toshiba', cat: 'ac', price: 34500, old: 0, stock: true },
+      { id: 13, name: 'تكييف سبليت 3 حصان بارد', brand: 'Fresh', cat: 'ac', price: 38900, old: 0, stock: false },
+      { id: 14, name: 'بوتاجاز 5 شعلة ستانلس', brand: 'Unionaire', cat: 'cooker', price: 14900, old: 16800, stock: true },
+      { id: 15, name: 'بوتاجاز غاز 4 شعلة', brand: 'Fresh', cat: 'cooker', price: 9400, old: 0, stock: true },
+      { id: 16, name: 'بوتاجاز غاز 5 شعلة بشاشة', brand: 'Tornado', cat: 'cooker', price: 11700, old: 0, stock: true }
+    ];
+  }
+  fmt(n) {
+    return Number(n).toLocaleString('en-US');
+  }
+  renderVals() {
+    const s = this.state || {};
+    const cat = s.cat || 'all';
+    const sel = s.brands || {};
+    const maxPrice = s.maxPrice === undefined ? 45000 : s.maxPrice;
+    const onlySale = !!s.onlySale;
+    const inStock = !!s.inStock;
+    const sort = s.sort || 'rel';
+    const favs = s.favs || {};
+    const cartCount = s.cartCount === undefined ? 3 : s.cartCount;
+    const all = this.products();
+    const inCat = all.filter((p) => cat === 'all' || p.cat === cat);
+
+    const catDefs = [
+      { id: 'all', label: 'الكل' },
+      { id: 'fridge', label: 'ثلاجات وفريزر' },
+      { id: 'washer', label: 'غسالات' },
+      { id: 'tv', label: 'شاشات' },
+      { id: 'ac', label: 'تكييفات' },
+      { id: 'cooker', label: 'بوتاجازات' }
+    ];
+    const cats = catDefs.map((c) => {
+      const on = c.id === cat;
+      return {
+        label: c.label,
+        bg: on ? '#14201A' : '#FFFFFF',
+        fg: on ? '#D2C27A' : '#14201A',
+        border: on ? '#14201A' : '#E4DDC6',
+        pick: () => this.setState({ cat: c.id })
+      };
+    });
+
+    const brandNames = Array.from(new Set(all.map((p) => p.brand)));
+    const brands = brandNames.map((name) => ({
+      name: name,
+      count: inCat.filter((p) => p.brand === name).length,
+      checked: !!sel[name],
+      toggle: () => {
+        const n = Object.assign({}, (this.state && this.state.brands) || {});
+        n[name] = !n[name];
+        this.setState({ brands: n });
+      }
+    }));
+
+    let list = inCat.filter((p) => p.price <= maxPrice);
+    const anyBrand = Object.keys(sel).some((k) => sel[k]);
+    if (anyBrand) list = list.filter((p) => sel[p.brand]);
+    if (onlySale) list = list.filter((p) => p.old > 0);
+    if (inStock) list = list.filter((p) => p.stock);
+    list = list.slice();
+    const pctOf = (p) => (p.old > 0 ? Math.round(((p.old - p.price) / p.old) * 100) : 0);
+    if (sort === 'low') list.sort((a, b) => a.price - b.price);
+    if (sort === 'high') list.sort((a, b) => b.price - a.price);
+    if (sort === 'disc') list.sort((a, b) => pctOf(b) - pctOf(a));
+
+    const products = list.map((p) => ({
+      name: p.name,
+      brand: p.brand,
+      priceLabel: this.fmt(p.price),
+      oldLabel: this.fmt(p.old),
+      hasOld: p.old > 0,
+      pct: pctOf(p),
+      soldOut: !p.stock,
+      canBuy: p.stock,
+      isFridge: p.cat === 'fridge',
+      isWasher: p.cat === 'washer',
+      isTv: p.cat === 'tv',
+      isAc: p.cat === 'ac',
+      isCooker: p.cat === 'cooker',
+      isFav: !!favs[p.id],
+      notFav: !favs[p.id],
+      toggleFav: () => {
+        const f = Object.assign({}, (this.state && this.state.favs) || {});
+        f[p.id] = !f[p.id];
+        this.setState({ favs: f });
+      },
+      add: () => {
+        const cur = this.state && this.state.cartCount !== undefined ? this.state.cartCount : 3;
+        this.setState({ cartCount: cur + 1, toast: p.name });
+        if (this.tt) clearTimeout(this.tt);
+        this.tt = setTimeout(() => this.setState({ toast: '' }), 2600);
+      }
+    }));
+
+    const valOf = (e) => (e && e.target ? e.target.value : e);
+
+    return {
+      cats: cats,
+      brands: brands,
+      products: products,
+      count: products.length,
+      empty: products.length === 0,
+      maxPrice: maxPrice,
+      maxLabel: this.fmt(maxPrice),
+      sort: sort,
+      onlySale: onlySale,
+      inStock: inStock,
+      cartCount: cartCount,
+      showToast: !!s.toast,
+      toastName: s.toast || '',
+      setPrice: (e) => this.setState({ maxPrice: Number(valOf(e)) }),
+      setSort: (e) => this.setState({ sort: String(valOf(e)) }),
+      toggleSale: () => this.setState({ onlySale: !(this.state && this.state.onlySale) }),
+      toggleStock: () => this.setState({ inStock: !(this.state && this.state.inStock) }),
+      clearAll: () => this.setState({ brands: {}, maxPrice: 45000, onlySale: false, inStock: false, cat: 'all', sort: 'rel' })
+    };
+  }
+  componentWillUnmount() {
+    if (this.tt) clearTimeout(this.tt);
+  }
+}
+</script>
+</body>
+</html>

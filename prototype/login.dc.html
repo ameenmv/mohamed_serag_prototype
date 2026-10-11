@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>تسجيل الدخول - محمد سراج</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Lalezar&amp;family=Outfit:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body { margin: 0; }
+* { box-sizing: border-box; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+.navlink { transition: color .2s ease; }
+.navlink:hover { color: #B5A45C; }
+.btn-gold { transition: transform .2s ease, background .2s ease; }
+.btn-gold:hover { transform: translateY(-2px); background: #D2C27A !important; }
+.btn-dark { transition: transform .2s ease, background .2s ease; }
+.btn-dark:hover { transform: translateY(-2px); background: #2A4D38 !important; }
+.field:focus { border-color: #2A4D38 !important; box-shadow: 0 0 0 4px rgba(42,77,56,.12); }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.spin { animation: spin 22s linear infinite; }
+@media (max-width: 860px) { .nav-row { display: none !important; } .hide-m { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .spin { animation: none !important; } }
+</style>
+</helmet>
+
+<div style="width:100%;background:#FAF7EE;color:#14201A;font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;overflow-x:hidden">
+
+<dc-import name="Header" cart-count="3" hint-size="100%,184px"></dc-import>
+
+<section>
+  <div style="max-width:1280px;margin:0 auto;padding:56px 40px 88px;display:flex;flex-wrap:wrap;gap:0;align-items:stretch">
+
+    <!-- FORM -->
+    <div style="flex:1 1 520px;background:#fff;border:1px solid #E7E0C8;border-radius:0 40px 40px 0;padding:48px 52px;display:flex;flex-direction:column;gap:26px">
+      <div>
+        <h1 style="margin:0;font-family:'Lalezar',sans-serif;font-weight:400;font-size:clamp(38px,4.6vw,56px);line-height:1;color:#2A4D38">{{title}}</h1>
+        <div style="font-size:16px;color:#5B665F;margin-top:8px">{{subtitle}}</div>
+      </div>
+
+      <div style="display:flex;gap:6px;background:#F4F1E6;border-radius:999px;padding:6px">
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+          <button type="button" onClick="{{t.pick}}" style="flex:1;border:0;border-radius:999px;padding:12px 8px;font-weight:700;font-size:15px;background:{{t.bg}};color:{{t.fg}}">{{t.label}}</button>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{isLogin}}" hint-placeholder-val="{{true}}">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">رقم الموبايل أو البريد<input class="field" type="text" placeholder="01xxxxxxxxx" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">كلمة المرور<input class="field" type="password" placeholder="••••••••" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:14px"><label style="display:flex;gap:10px;align-items:center;cursor:pointer"><input type="checkbox" checked="{{true}}" style="width:18px;height:18px;accent-color:#2A4D38;margin:0">خليني مسجّل</label><a href="login.dc.html" style="color:#2A4D38;font-weight:700">نسيت كلمة المرور؟</a></div>
+          <a class="btn-gold" href="account.dc.html" style="height:58px;border-radius:999px;background:#B5A45C;color:#14201A;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center">دخول</a>
+          <a href="login.dc.html" style="text-align:center;color:#2A4D38;font-weight:700;font-size:15px;border-bottom:2px solid #B5A45C;padding-bottom:3px;align-self:center">ادخل بكود تحقق على الموبايل</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isRegister}}" hint-placeholder-val="{{false}}">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">الاسم بالكامل<input class="field" type="text" placeholder="الاسم الثلاثي" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+          <div style="display:flex;flex-wrap:wrap;gap:16px">
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">رقم الموبايل<input class="field" type="tel" placeholder="01xxxxxxxxx" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">البريد الإلكتروني<input class="field" type="email" placeholder="name@email.com" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">كلمة المرور<input class="field" type="password" placeholder="8 حروف أو أكتر" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+          <a class="btn-gold" href="account.dc.html" style="height:58px;border-radius:999px;background:#B5A45C;color:#14201A;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center">إنشاء الحساب</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isTrader}}" hint-placeholder-val="{{false}}">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="background:#F4EFD6;border-radius:18px;padding:14px 18px;font-size:14px;line-height:1.8;color:#4A4219">الحساب بيتفعّل بعد مراجعة الإدارة، وبعدها تشوف أسعار الجملة وتطلب بكميات.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:16px">
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">اسم صاحب النشاط<input class="field" type="text" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">اسم المعرض / الشركة<input class="field" type="text" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:16px">
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">رقم الموبايل<input class="field" type="tel" placeholder="01xxxxxxxxx" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">نوع النشاط
+              <select class="field" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"><option>صاحب معرض</option><option>تاجر جملة</option><option>مقاول / تجهيز وحدات</option><option>آخر</option></select>
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">السجل التجاري أو البطاقة الضريبية <span style="font-weight:400;color:#8A918C">(اختياري)</span><input type="file" style="border:1.5px dashed #D8D0B4;border-radius:16px;padding:14px 18px;font-size:15px;background:#FAF7EE;color:#5B665F"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">كلمة المرور<input class="field" type="password" placeholder="8 حروف أو أكتر" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+          <a class="btn-dark" href="account.dc.html" style="height:58px;border-radius:999px;background:#14201A;color:#D2C27A;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center">ابعت طلب التسجيل</a>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;align-items:center;gap:14px;color:#8A918C;font-size:14px"><span style="flex:1;height:1px;background:#E4DDC6"></span>أو كمّل بـ<span style="flex:1;height:1px;background:#E4DDC6"></span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="account.dc.html" style="flex:1 1 180px;height:52px;border:1.5px solid #E4DDC6;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:600"><span style="width:26px;height:26px;border-radius:50%;background:#F4F1E6;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:14px">G</span>جوجل</a>
+        <a href="account.dc.html" style="flex:1 1 180px;height:52px;border:1.5px solid #E4DDC6;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:600"><span style="width:26px;height:26px;border-radius:50%;background:#F4F1E6;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:14px">f</span>فيسبوك</a>
+      </div>
+      <a href="checkout.dc.html" style="text-align:center;color:#5B665F;font-size:15px">أو كمّل <b style="color:#2A4D38;border-bottom:2px solid #B5A45C">كضيف</b> من غير حساب</a>
+    </div>
+
+    <!-- BRAND PANEL -->
+    <div style="flex:1 1 440px;position:relative;overflow:hidden;background:#16291E;color:#FAF7EE;border-radius:40px 0 0 40px;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:560px">
+      <div style="position:absolute;top:-160px;left:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(181,164,92,.3) 0%,rgba(181,164,92,0) 65%)"></div>
+      <div aria-hidden="true" style="position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);font-family:'Outfit',sans-serif;font-weight:800;font-size:300px;line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(181,164,92,.16);letter-spacing:-6px;white-space:nowrap">1972</div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:18px">
+        <div style="font-family:'Outfit',sans-serif;font-weight:700;letter-spacing:4px;font-size:13px;color:#D2C27A">MOHAMED SERAG</div>
+        <div style="font-family:'Lalezar',sans-serif;font-size:clamp(46px,5vw,72px);line-height:1">أهلاً بيك في<br><span style="color:#D2C27A">بيت سراج</span></div>
+        <div style="font-size:18px;line-height:1.9;color:#C9D5C6;max-width:400px">حسابك بيخليك تتابع طلباتك وتحفظ عناوينك وتجمع نقاط ولاء على كل شراء.</div>
+      </div>
+      <ul style="position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;font-size:17px">
+        <li style="display:flex;gap:14px;align-items:center"><span style="width:34px;height:34px;border-radius:50%;background:rgba(181,164,92,.18);color:#D2C27A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>تتبّع طلباتك لحظة بلحظة</li>
+        <li style="display:flex;gap:14px;align-items:center"><span style="width:34px;height:34px;border-radius:50%;background:rgba(181,164,92,.18);color:#D2C27A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>نقاط ولاء على كل عملية شراء</li>
+        <li style="display:flex;gap:14px;align-items:center"><span style="width:34px;height:34px;border-radius:50%;background:rgba(181,164,92,.18);color:#D2C27A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>مفضلة وعناوين محفوظة وإعادة طلب بضغطة</li>
+        <li style="display:flex;gap:14px;align-items:center"><span style="width:34px;height:34px;border-radius:50%;background:rgba(181,164,92,.18);color:#D2C27A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>للتجار: أسعار جملة وفواتير خاصة</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,430px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const tab = s.tab || 'login';
+    const defs = [
+      { id: 'login', label: 'تسجيل الدخول' },
+      { id: 'register', label: 'حساب جديد' },
+      { id: 'trader', label: 'تاجر / معرض' }
+    ];
+    const tabs = defs.map((d) => ({
+      label: d.label,
+      bg: d.id === tab ? '#14201A' : 'transparent',
+      fg: d.id === tab ? '#D2C27A' : '#3C4840',
+      pick: () => this.setState({ tab: d.id })
+    }));
+    const titles = {
+      login: ['أهلاً بيك تاني', 'سجّل دخولك وكمّل من حيث وقفت'],
+      register: ['حساب جديد', 'دقيقة واحدة وتبدأ تتسوّق'],
+      trader: ['سجّل كتاجر', 'أسعار جملة وفواتير خاصة لأصحاب المعارض']
+    };
+    return {
+      tabs: tabs,
+      title: titles[tab][0],
+      subtitle: titles[tab][1],
+      isLogin: tab === 'login',
+      isRegister: tab === 'register',
+      isTrader: tab === 'trader'
+    };
+  }
+}
+</script>
+</body>
+</html>
