@@ -38,7 +38,7 @@ input, select { font-family: inherit; }
 <!-- BREADCRUMB -->
 <div style="background:#fff;border-bottom:1px solid #ECE6D3">
   <div style="max-width:1280px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;gap:10px;font-size:15px;color:#5B665F">
-    <a class="navlink" href="index.dc.html">الرئيسية</a>
+    <a class="navlink" href="index.html">الرئيسية</a>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
     <span style="color:#14201A;font-weight:600">كل المنتجات</span>
   </div>
@@ -97,7 +97,7 @@ input, select { font-family: inherit; }
       <div style="margin-top:14px;background:#16291E;color:#FAF7EE;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px">
         <div style="font-family:'Lalezar',sans-serif;font-size:26px;color:#D2C27A;line-height:1.1">تاجر أو صاحب معرض؟</div>
         <div style="font-size:14px;line-height:1.7;color:#C9D5C6">سجّل كتاجر وشوف أسعار الجملة.</div>
-        <a href="login.dc.html" style="margin-top:6px;align-self:flex-start;color:#D2C27A;font-weight:700;border-bottom:2px solid #B5A45C;padding-bottom:2px">سجّل دلوقتي</a>
+        <a href="login.html" style="margin-top:6px;align-self:flex-start;color:#D2C27A;font-weight:700;border-bottom:2px solid #B5A45C;padding-bottom:2px">سجّل دلوقتي</a>
       </div>
     </aside>
 
@@ -127,7 +127,7 @@ input, select { font-family: inherit; }
         <sc-for list="{{products}}" as="p" hint-placeholder-count="6">
           <article class="pcard" style="background:#fff;border-radius:26px;border:1px solid #E7E0C8;display:flex;flex-direction:column;overflow:hidden">
             <div style="position:relative;height:230px;background:#F4F1E6;color:#2A4D38">
-              <a href="product.dc.html" aria-label="{{p.name}}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+              <a href="product.html" aria-label="{{p.name}}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
                 <sc-if value="{{p.isFridge}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 48 48" width="128" height="128" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="13" y="4" width="22" height="40" rx="3"></rect><path d="M13 20h22M18 10v6M18 25v8"></path></svg></sc-if>
                 <sc-if value="{{p.isWasher}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 48 48" width="128" height="128" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="4" width="30" height="40" rx="4"></rect><circle cx="24" cy="28" r="10"></circle><circle cx="24" cy="28" r="5"></circle><path d="M15 11h8M31 11h2"></path></svg></sc-if>
                 <sc-if value="{{p.isTv}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 48 48" width="128" height="128" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="40" height="27" rx="3"></rect><path d="M16 42h16M24 35v7"></path></svg></sc-if>
@@ -153,7 +153,7 @@ input, select { font-family: inherit; }
                 <sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-family:'Outfit',sans-serif;font-size:14px;color:#8A918C;text-decoration:line-through">{{p.oldLabel}}</span></sc-if>
               </div>
               <div style="font-size:13px;color:#6F6329;font-weight:600">{{p.brand}}</div>
-              <a href="product.dc.html" style="font-size:16px;line-height:1.6;font-weight:500;color:#14201A">{{p.name}}</a>
+              <a href="product.html" style="font-size:16px;line-height:1.6;font-weight:500;color:#14201A">{{p.name}}</a>
               <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#5B665F;margin-top:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2A4D38" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>الدفع عند الاستلام</div>
             </div>
           </article>
@@ -178,7 +178,7 @@ input, select { font-family: inherit; }
   <div style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:50;background:#14201A;color:#FAF7EE;padding:14px 24px;border-radius:999px;display:flex;align-items:center;gap:16px;font-size:16px;box-shadow:0 24px 50px -16px rgba(0,0,0,.6);border:1px solid rgba(210,194,122,.5)">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
     <span>تمت إضافة «{{toastName}}» للسلة</span>
-    <a href="cart.dc.html" style="color:#D2C27A;font-weight:700;border-bottom:2px solid #B5A45C">عرض السلة</a>
+    <a href="cart.html" style="color:#D2C27A;font-weight:700;border-bottom:2px solid #B5A45C">عرض السلة</a>
   </div>
 </sc-if>
 
