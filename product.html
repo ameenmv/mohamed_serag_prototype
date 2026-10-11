@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>صفحة المنتج - محمد سراج</title>
 <script src="./vendor/react.js"></script>
 <script src="./vendor/react-dom.js"></script>
@@ -28,6 +29,18 @@ input, select { font-family: inherit; }
 .btn-dark { transition: transform .2s ease, background .2s ease; }
 .btn-dark:hover { transform: translateY(-2px); background: #2A4D38 !important; }
 @media (max-width: 860px) { .nav-row { display: none !important; } .hide-m { display: none !important; } }
+
+@media (max-width: 768px) {
+  header > div { padding: 12px 16px !important; gap: 10px 16px !important; }
+  div[style*="background:#0E1A13"] > div { padding: 8px 16px !important; font-size: 12px !important; }
+  form, div[style*="flex:1 1 360px"] { flex: 1 1 100% !important; }
+  div[style*="max-width:1280px"] { padding-left: 18px !important; padding-right: 18px !important; }
+  article[style*="flex:1 1 270px"], article[style*="flex:1 1 320px"] { flex: 1 1 100% !important; }
+  div[style*="flex:1 1 240px"] { flex: 1 1 100% !important; }
+  footer > div { padding: 40px 18px 20px !important; }
+  footer div[style*="flex:2 1 320px"], footer div[style*="flex:1 1 160px"], footer div[style*="flex:1 1 220px"] { flex: 1 1 100% !important; }
+  .side { flex: 1 1 100% !important; }
+}
 </style>
 </helmet>
 
