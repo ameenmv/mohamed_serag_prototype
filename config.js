@@ -1687,11 +1687,10 @@ header form, header > div > div[style*="flex:1 1 360px"] { position: relative !i
     if (waProd) {
       e.preventDefault();
       var card = waProd.closest('.pcard');
-      var name = card && card.querySelector('h3, a[href="product.html"]')
-        ? card.querySelector('h3, a[href="product.html"]').textContent.trim().replace(/\s+/g, ' ')
-        : (document.querySelector('h1') ? document.querySelector('h1').textContent.trim().replace(/\s+/g, ' ') : CATALOG[0].name);
-      var price = card ? (card.querySelector('[style*="font-size:24px"], [style*="font-size:23px"]') || {}).textContent : '28,900';
-      window.open(C.waLink('السلام عليكم، عايز أسأل على:\n' + name + (price ? '\nالسعر: ' + price + ' ج.م' : '') + '\nهل متاح حالياً؟'), '_blank');
+      var pInfo = card ? findProductFromCard(card) : null;
+      var name = pInfo ? pInfo.name : (document.querySelector('h1') ? document.querySelector('h1').textContent.trim().replace(/\s+/g, ' ') : CATALOG[0].name);
+      var price = pInfo ? pInfo.price.toLocaleString('en-US') : '28,900';
+      window.open(C.waLink('السلام عليكم، عايز أسأل على:\n' + name + '\nالسعر: ' + price + ' ج.م\nهل متاح حالياً؟'), '_blank');
       return;
     }
 
@@ -1709,6 +1708,18 @@ header form, header > div > div[style*="flex:1 1 360px"] { position: relative !i
       var prod = findProductFromCard(c);
       addToMiniCart(prod);
       showToast('تمت الإضافة للسلة ✓ · ' + prod.name.slice(0, 24));
+      var lbl = addBtn.querySelector('span');
+      if (lbl && !addBtn._srBusy) {
+        addBtn._srBusy = true;
+        var orig = lbl.textContent;
+        addBtn.style.background = '#15803D';
+        lbl.textContent = '✓ تمت الإضافة';
+        setTimeout(function () {
+          lbl.textContent = orig;
+          addBtn.style.background = '#2A4D38';
+          addBtn._srBusy = false;
+        }, 1300);
+      }
     }
   });
 
