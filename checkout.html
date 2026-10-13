@@ -7,6 +7,7 @@
 <script src="./vendor/react.js"></script>
 <script src="./vendor/react-dom.js"></script>
 <script src="./support.js"></script>
+<script src="./config.js"></script>
 </head>
 <body>
 <x-dc>
@@ -24,6 +25,10 @@ input, select, textarea { font-family: inherit; }
 .navlink:hover { color: #B5A45C; }
 .btn-gold { transition: transform .2s ease, background .2s ease; }
 .btn-gold:hover { transform: translateY(-2px); background: #D2C27A !important; }
+.opt { transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease; }
+.opt:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -20px rgba(20,32,26,.35); }
+.copy { transition: background .2s ease, color .2s ease; }
+.copy:hover { background: #2A4D38 !important; color: #FAF7EE !important; }
 .field:focus { border-color: #2A4D38 !important; box-shadow: 0 0 0 4px rgba(42,77,56,.12); }
 @media (max-width: 860px) { .nav-row { display: none !important; } .hide-m { display: none !important; } }
 
@@ -52,7 +57,7 @@ input, select, textarea { font-family: inherit; }
       <span class="hide-m" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>استلام من المعرض أو توصيل لحد باب البيت</span>
     </div>
     <div style="display:flex;gap:20px;align-items:center">
-      <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>[رقم الهاتف]</span>
+      <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-phone-text="1" style="font-family:'Outfit',sans-serif;direction:ltr">01000000000</span></span>
       <span style="border:1px solid rgba(181,164,92,.5);border-radius:999px;padding:2px 12px;font-family:'Outfit',sans-serif;font-weight:700;font-size:13px">EN</span>
     </div>
   </div>
@@ -88,9 +93,8 @@ input, select, textarea { font-family: inherit; }
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">أجهزة مطبخ</a>
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">أدوات منزلية</a>
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:700;color:#FF9B7A">عروض الفلاش</a>
-      <a class="navlink" href="index.html" style="padding:14px 16px;white-space:nowrap;font-weight:700;color:#D2C27A">تجهيز العرايس</a>
       <a class="navlink" href="login.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">للتجار</a>
-      <a class="navlink" href="index.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">من نحن</a>
+      <a class="navlink" href="index.html#about" style="padding:14px 16px;white-space:nowrap;font-weight:500">من نحن</a>
     </div>
   </nav>
 </header>
@@ -132,11 +136,11 @@ input, select, textarea { font-family: inherit; }
         <div style="display:flex;flex-wrap:wrap;gap:16px">
           <label style="flex:1 1 260px;border:2px solid {{pickupBorder}};background:{{pickupBg}};border-radius:22px;padding:20px;display:flex;gap:14px;align-items:flex-start;cursor:pointer">
             <input type="radio" name="ship" checked="{{isPickup}}" onChange="{{pickPickup}}" style="width:22px;height:22px;accent-color:#2A4D38;margin:2px 0 0">
-            <span style="display:flex;flex-direction:column;gap:4px"><b style="font-size:17px">استلام من المعرض</b><span style="font-size:14px;color:#5B665F;line-height:1.6">المنصورة · جاهز خلال [المدة]</span><b style="color:#16A34A">مجاناً</b></span>
+            <span style="display:flex;flex-direction:column;gap:4px"><b style="font-size:17px">استلام من المعرض</b><span style="font-size:14px;color:#5B665F;line-height:1.6">المنصورة · جاهز خلال ساعتين</span><b style="color:#16A34A">مجاناً</b></span>
           </label>
           <label style="flex:1 1 260px;border:2px solid {{deliveryBorder}};background:{{deliveryBg}};border-radius:22px;padding:20px;display:flex;gap:14px;align-items:flex-start;cursor:pointer">
             <input type="radio" name="ship" checked="{{isDelivery}}" onChange="{{pickDelivery}}" style="width:22px;height:22px;accent-color:#2A4D38;margin:2px 0 0">
-            <span style="display:flex;flex-direction:column;gap:4px"><b style="font-size:17px">توصيل لحد البيت</b><span style="font-size:14px;color:#5B665F;line-height:1.6">التكلفة حسب المنطقة</span><b style="color:#6F6329">150 ج.م</b></span>
+            <span style="display:flex;flex-direction:column;gap:4px"><b style="font-size:17px">توصيل لحد البيت</b><span style="font-size:14px;color:#5B665F;line-height:1.6">التكلفة حسب المنطقة</span><b style="color:#6F6329">من {{minZone}} ج.م</b></span>
           </label>
         </div>
       </div>
@@ -145,11 +149,32 @@ input, select, textarea { font-family: inherit; }
         <div style="background:#fff;border:1px solid #E7E0C8;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:20px">
           <div style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800">3</span><h2 style="margin:0;font-size:22px">عنوان التوصيل</h2></div>
           <div style="display:flex;flex-wrap:wrap;gap:16px">
-            <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">المحافظة
-              <select class="field" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A">
-                <option>الدقهلية</option><option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option><option>الشرقية</option><option>الغربية</option><option>المنوفية</option><option>دمياط</option><option>كفر الشيخ</option><option>أخرى</option>
-              </select>
-            </label>
+            <div style="flex:1 1 100%;display:flex;flex-direction:column;gap:10px">
+              <div style="font-weight:600;font-size:15px">منطقة التوصيل <span style="font-weight:400;color:#8A918C">(سعر الشحن ثابت ومعروف)</span></div>
+              <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <label class="opt" style="flex:1 1 220px;border:2px solid {{z0Border}};background:{{z0Bg}};border-radius:20px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+                <input type="radio" name="zone" checked="{{z0On}}" onChange="{{pickZ0}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:3px 0 0;flex:none">
+                <span style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:0"><b style="font-size:16px">{{z0Name}}</b><span style="font-size:13px;color:#5B665F;line-height:1.5">{{z0Desc}}</span></span>
+                <b style="font-family:'Outfit',sans-serif;font-size:17px;color:#2A4D38;white-space:nowrap">{{z0Price}} <span style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:12px">ج.م</span></b>
+              </label><label class="opt" style="flex:1 1 220px;border:2px solid {{z1Border}};background:{{z1Bg}};border-radius:20px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+                <input type="radio" name="zone" checked="{{z1On}}" onChange="{{pickZ1}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:3px 0 0;flex:none">
+                <span style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:0"><b style="font-size:16px">{{z1Name}}</b><span style="font-size:13px;color:#5B665F;line-height:1.5">{{z1Desc}}</span></span>
+                <b style="font-family:'Outfit',sans-serif;font-size:17px;color:#2A4D38;white-space:nowrap">{{z1Price}} <span style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:12px">ج.م</span></b>
+              </label><label class="opt" style="flex:1 1 220px;border:2px solid {{z2Border}};background:{{z2Bg}};border-radius:20px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+                <input type="radio" name="zone" checked="{{z2On}}" onChange="{{pickZ2}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:3px 0 0;flex:none">
+                <span style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:0"><b style="font-size:16px">{{z2Name}}</b><span style="font-size:13px;color:#5B665F;line-height:1.5">{{z2Desc}}</span></span>
+                <b style="font-family:'Outfit',sans-serif;font-size:17px;color:#2A4D38;white-space:nowrap">{{z2Price}} <span style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:12px">ج.م</span></b>
+              </label><label class="opt" style="flex:1 1 220px;border:2px solid {{z3Border}};background:{{z3Bg}};border-radius:20px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+                <input type="radio" name="zone" checked="{{z3On}}" onChange="{{pickZ3}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:3px 0 0;flex:none">
+                <span style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:0"><b style="font-size:16px">{{z3Name}}</b><span style="font-size:13px;color:#5B665F;line-height:1.5">{{z3Desc}}</span></span>
+                <b style="font-family:'Outfit',sans-serif;font-size:17px;color:#2A4D38;white-space:nowrap">{{z3Price}} <span style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:12px">ج.م</span></b>
+              </label>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;background:#FBF6E3;border:1px solid #EADFAE;border-radius:16px;padding:14px 16px;font-size:14px;line-height:1.7;color:#5A5022">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B7D3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:1px"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+                <span><b>طلبك فيه أجهزة كبيرة (ثلاجة / غسالة).</b> المبلغ ده رسوم حجز عربية التوصيل، ولو في أي فرق المندوب بيأكده معاك على واتساب <b>قبل</b> ما يتحرك. مفيش مفاجآت.</span>
+              </div>
+            </div>
             <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">المدينة / المنطقة<input class="field" type="text" placeholder="مثال: المنصورة" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
             <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">العنوان بالتفصيل<input class="field" type="text" placeholder="الشارع، رقم العمارة، الدور، الشقة" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
             <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">ملاحظات على الطلب <span style="font-weight:400;color:#8A918C">(اختياري)</span><textarea class="field" rows="3" placeholder="علامة مميزة، أو موعد مناسب للتوصيل" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A;resize:vertical"></textarea></label>
@@ -159,15 +184,35 @@ input, select, textarea { font-family: inherit; }
 
       <div style="background:#fff;border:1px solid #E7E0C8;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:20px">
         <div style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800">{{payStep}}</span><h2 style="margin:0;font-size:22px">طريقة الدفع</h2></div>
-        <label style="border:2px solid #2A4D38;background:#F4F8F3;border-radius:22px;padding:20px;display:flex;gap:14px;align-items:center;cursor:pointer">
-          <input type="radio" name="pay" checked="{{true}}" style="width:22px;height:22px;accent-color:#2A4D38;margin:0">
-          <span style="display:flex;flex-direction:column;gap:4px;flex:1"><b style="font-size:17px">الدفع عند الاستلام</b><span style="font-size:14px;color:#5B665F">ادفع كاش وانت بتستلم طلبك</span></span>
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2A4D38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.8"></circle></svg>
-        </label>
-        <div style="display:flex;flex-wrap:wrap;gap:12px">
-          <div style="flex:1 1 200px;border:1.5px dashed #D8D0B4;border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;color:#8A918C;font-weight:600"><span>بطاقة بنكية</span><span style="font-size:13px;background:#F4F1E6;padding:4px 12px;border-radius:999px">قريباً</span></div>
-          <div style="flex:1 1 200px;border:1.5px dashed #D8D0B4;border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;color:#8A918C;font-weight:600"><span>محفظة إلكترونية</span><span style="font-size:13px;background:#F4F1E6;padding:4px 12px;border-radius:999px">قريباً</span></div>
+        <div style="border:2px solid #2A4D38;background:#F4F8F3;border-radius:22px;padding:20px;display:flex;gap:14px;align-items:center">
+          <span style="width:46px;height:46px;border-radius:14px;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.8"></circle></svg></span>
+          <span style="display:flex;flex-direction:column;gap:4px;flex:1"><b style="font-size:17px">تمن المنتجات: كاش عند الاستلام</b><span style="font-size:14px;color:#5B665F;line-height:1.6">تعاين الجهاز قدامك وتدفع وانت مطمّن.</span></span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
         </div>
+        <sc-if value="{{isDelivery}}" hint-placeholder-val="{{true}}">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;justify-content:space-between">
+              <b style="font-size:17px">مصاريف الشحن بتتحوّل مقدّماً بـ:</b>
+              <span style="font-size:13px;color:#5B665F">عشان نحجز لك عربية التوصيل</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <label class="opt" style="flex:1 1 180px;border:2px solid {{m_instapayBorder}};background:{{m_instapayBg}};border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;cursor:pointer;position:relative">
+                <input type="radio" name="method" checked="{{m_instapayOn}}" onChange="{{pick_instapay}}" style="position:absolute;top:16px;left:16px;width:20px;height:20px;accent-color:#2A4D38;margin:0">
+                <span style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#5B2A86,#8E3FBF);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px">IPN</span>
+                <span style="display:flex;flex-direction:column;gap:2px"><b style="font-size:16px">إنستا باي</b><span style="font-size:13px;color:#5B665F">تحويل فوري من أي بنك</span></span>
+              </label><label class="opt" style="flex:1 1 180px;border:2px solid {{m_vfcashBorder}};background:{{m_vfcashBg}};border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;cursor:pointer;position:relative">
+                <input type="radio" name="method" checked="{{m_vfcashOn}}" onChange="{{pick_vfcash}}" style="position:absolute;top:16px;left:16px;width:20px;height:20px;accent-color:#2A4D38;margin:0">
+                <span style="width:46px;height:46px;border-radius:14px;background:#E60000;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px">VF</span>
+                <span style="display:flex;flex-direction:column;gap:2px"><b style="font-size:16px">فودافون كاش</b><span style="font-size:13px;color:#5B665F">من محفظة الموبايل</span></span>
+              </label><label class="opt" style="flex:1 1 180px;border:2px solid {{m_fawryBorder}};background:{{m_fawryBg}};border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;cursor:pointer;position:relative">
+                <input type="radio" name="method" checked="{{m_fawryOn}}" onChange="{{pick_fawry}}" style="position:absolute;top:16px;left:16px;width:20px;height:20px;accent-color:#2A4D38;margin:0">
+                <span style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#F7B500,#1C5DAB);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px">F</span>
+                <span style="display:flex;flex-direction:column;gap:2px"><b style="font-size:16px">فوري</b><span style="font-size:13px;color:#5B665F">من أي فرع أو التطبيق</span></span>
+              </label>
+            </div>
+            <div style="font-size:14px;color:#3C4840;line-height:1.7;display:flex;gap:10px;align-items:flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A4D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.01"/></svg>بعد ما تأكد الطلب هتلاقي رقم التحويل بزرار نسخ، وتبعت صورة التحويل على واتساب بضغطة واحدة.</div>
+          </div>
+        </sc-if>
       </div>
     </div>
 
@@ -182,18 +227,24 @@ input, select, textarea { font-family: inherit; }
           <div style="display:flex;gap:14px;align-items:center"><div style="width:62px;height:62px;border-radius:16px;background:#F4F1E6;color:#2A4D38;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 48 48" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="40" height="27" rx="3"></rect><path d="M16 42h16M24 35v7"></path></svg></div><div style="flex:1;font-size:15px;line-height:1.5">شاشة سمارت 55 بوصة 4K <span style="color:#8A918C">× 1</span></div><b style="font-family:'Outfit',sans-serif;font-size:16px">21,900</b></div>
         </div>
 
-        <div style="display:flex;flex-direction:column;gap:12px;font-size:17px;border-top:1px dashed #D8D0B4;padding-top:18px">
-          <div style="display:flex;justify-content:space-between"><span style="color:#5B665F">المجموع الفرعي</span><span style="font-family:'Outfit',sans-serif;font-weight:700">75,300 ج.م</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:#5B665F">الشحن</span><span style="font-weight:700;color:#6F6329">{{shipLabel}}</span></div>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:16px;border-top:1px dashed #D8D0B4;padding-top:18px">
+          <div style="display:flex;justify-content:space-between"><span style="color:#5B665F">المنتجات</span><span style="font-family:'Outfit',sans-serif;font-weight:700">75,300 ج.م</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#5B665F">الشحن · {{zoneShort}}</span><span style="font-weight:700;color:#6F6329">{{shipLabel}}</span></div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed #D8D0B4;padding-top:18px">
-          <span style="font-weight:700;font-size:18px">الإجمالي</span>
-          <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;color:#2A4D38;line-height:1">{{totalLabel}} <span style="font-size:15px;font-family:'IBM Plex Sans Arabic',sans-serif;color:#14201A">ج.م</span></span>
+        <div style="border-radius:22px;overflow:hidden;border:1.5px solid #E4DDC6">
+          <div style="background:#2A4D38;color:#FAF7EE;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <span style="display:flex;flex-direction:column;gap:2px"><b style="font-size:15px">تحوّله دلوقتي</b><span style="font-size:12px;color:#B9C7B6">{{payNowHint}}</span></span>
+            <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;color:#D2C27A;line-height:1">{{payNowLabel}}</span>
+          </div>
+          <div style="background:#FAF7EE;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <span style="display:flex;flex-direction:column;gap:2px"><b style="font-size:15px">تدفعه عند الاستلام</b><span style="font-size:12px;color:#5B665F">كاش للمندوب أو في المعرض</span></span>
+            <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;color:#2A4D38;line-height:1">75,300 <span style="font-size:13px;font-family:'IBM Plex Sans Arabic',sans-serif">ج.م</span></span>
+          </div>
         </div>
 
-        <label style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.7;color:#3C4840;cursor:pointer"><input type="checkbox" checked="{{true}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:2px 0 0;flex:none"><span>موافق على <a href="index.html" style="color:#2A4D38;font-weight:700;border-bottom:1.5px solid #B5A45C">الشروط والأحكام</a> وسياسة الاسترجاع</span></label>
+        <label style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.7;color:#3C4840;cursor:pointer"><input type="checkbox" checked="{{true}}" style="width:20px;height:20px;accent-color:#2A4D38;margin:2px 0 0;flex:none"><span>موافق على <a href="#policy-terms" data-article="policy-terms" style="color:#2A4D38;font-weight:700;border-bottom:1.5px solid #B5A45C">الشروط والأحكام</a> و<a href="#policy-return" data-article="policy-return" style="color:#2A4D38;font-weight:700;border-bottom:1.5px solid #B5A45C">سياسة الاسترجاع</a></span></label>
 
-        <a class="btn-gold" href="order-confirmed.html" style="height:60px;border-radius:999px;background:#B5A45C;color:#14201A;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:12px">تأكيد الطلب<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+        <a class="btn-gold" href="order-confirmed.html" onClick="{{saveOrder}}" style="height:60px;border-radius:999px;background:#B5A45C;color:#14201A;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;gap:12px">تأكيد الطلب<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
       </div>
       <div style="display:flex;gap:12px;align-items:center;font-size:14px;color:#3C4840;padding:0 6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A4D38" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>بياناتك محمية، ومش بنشاركها مع أي طرف.</div>
     </aside>
@@ -217,12 +268,12 @@ input, select, textarea { font-family: inherit; }
       </div>
       <div style="flex:1 1 160px;display:flex;flex-direction:column;gap:12px;font-size:16px">
         <div style="font-weight:700;font-size:18px;color:#FAF7EE;margin-bottom:6px">خدمة العملاء</div>
-        <a class="navlink" href="account.html">تتبع طلبك</a><a class="navlink" href="index.html">سياسة الاسترجاع</a><a class="navlink" href="index.html">الشروط والأحكام</a><a class="navlink" href="index.html">الأسئلة الشائعة</a>
+        <a class="navlink" href="#track" data-track-order="1">تتبع طلبك</a><a class="navlink" href="#policy-return" data-article="policy-return">سياسة الاسترجاع</a><a class="navlink" href="#policy-terms" data-article="policy-terms">الشروط والأحكام</a><a class="navlink" href="#policy-faq" data-article="policy-faq">الأسئلة الشائعة</a>
       </div>
       <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:12px;font-size:16px">
         <div style="font-weight:700;font-size:18px;color:#FAF7EE;margin-bottom:6px">تواصل معانا</div>
         <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>المنصورة، مصر</div>
-        <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>[رقم الهاتف]</div>
+        <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-phone-text="1" style="font-family:'Outfit',sans-serif;direction:ltr">01000000000</span></div>
         <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span style="font-family:'Outfit',sans-serif">serag.co</span></div>
       </div>
     </div>
@@ -242,23 +293,57 @@ class Component extends DCLogic {
     return Number(n).toLocaleString('en-US');
   }
   renderVals() {
+    const C = window.SERAG;
     const s = this.state || {};
-    const ship = s.ship || 'pickup';
+    const ship = s.ship || 'delivery';
     const isDelivery = ship === 'delivery';
-    const shipCost = isDelivery ? 150 : 0;
-    return {
+    const zi = s.zone == null ? 0 : s.zone;
+    const method = s.method || 'instapay';
+    const zone = C.zones[zi];
+    const shipCost = isDelivery ? zone.price : 0;
+    const on = '#2A4D38', off = '#E4DDC6', onBg = '#F4F8F3', offBg = '#FFFFFF';
+    const v = {
       isPickup: !isDelivery,
       isDelivery: isDelivery,
-      pickupBorder: !isDelivery ? '#2A4D38' : '#E4DDC6',
-      pickupBg: !isDelivery ? '#F4F8F3' : '#FFFFFF',
-      deliveryBorder: isDelivery ? '#2A4D38' : '#E4DDC6',
-      deliveryBg: isDelivery ? '#F4F8F3' : '#FFFFFF',
+      pickupBorder: !isDelivery ? on : off,
+      pickupBg: !isDelivery ? onBg : offBg,
+      deliveryBorder: isDelivery ? on : off,
+      deliveryBg: isDelivery ? onBg : offBg,
       pickPickup: () => this.setState({ ship: 'pickup' }),
       pickDelivery: () => this.setState({ ship: 'delivery' }),
       payStep: isDelivery ? '4' : '3',
-      shipLabel: isDelivery ? '150 ج.م' : 'مجاناً',
-      totalLabel: this.fmt(75300 + shipCost)
+      minZone: Math.min.apply(null, C.zones.map(z => z.price)),
+      zoneShort: isDelivery ? zone.name : 'استلام من المعرض',
+      shipLabel: isDelivery ? this.fmt(shipCost) + ' ج.م' : 'مجاناً',
+      payNowLabel: isDelivery ? this.fmt(shipCost) : '0',
+      payNowHint: isDelivery ? 'مصاريف الشحن · ' + C.pay[method].name : 'مش محتاج تحوّل أي حاجة',
+      totalLabel: this.fmt(75300 + shipCost),
+      saveOrder: () => {
+        const no = 'SR-' + String(Date.now()).slice(-6);
+        try {
+          localStorage.setItem('serag_order', JSON.stringify({
+            no, ship, zone: zi, method, shipCost, subtotal: 75300,
+            items: ['ثلاجة نوفروست بابين 450 لتر', 'غسالة أوتوماتيك فتحة أمامية 8 كجم', 'شاشة سمارت 55 بوصة 4K']
+          }));
+        } catch (e) {}
+      }
     };
+    C.zones.forEach((z, i) => {
+      v['z' + i + 'Name'] = z.name;
+      v['z' + i + 'Desc'] = z.desc;
+      v['z' + i + 'Price'] = this.fmt(z.price);
+      v['z' + i + 'On'] = zi === i;
+      v['z' + i + 'Border'] = zi === i ? on : off;
+      v['z' + i + 'Bg'] = zi === i ? onBg : offBg;
+      v['pickZ' + i] = () => this.setState({ zone: i });
+    });
+    ['instapay', 'vfcash', 'fawry'].forEach(k => {
+      v['m_' + k + 'On'] = method === k;
+      v['m_' + k + 'Border'] = method === k ? on : off;
+      v['m_' + k + 'Bg'] = method === k ? onBg : offBg;
+      v['pick_' + k] = () => this.setState({ method: k });
+    });
+    return v;
   }
 }
 </script>

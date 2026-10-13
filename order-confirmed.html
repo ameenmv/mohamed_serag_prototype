@@ -7,6 +7,7 @@
 <script src="./vendor/react.js"></script>
 <script src="./vendor/react-dom.js"></script>
 <script src="./support.js"></script>
+<script src="./config.js"></script>
 </head>
 <body>
 <x-dc>
@@ -23,6 +24,13 @@ button { font-family: inherit; cursor: pointer; }
 .navlink:hover { color: #B5A45C; }
 .btn-gold { transition: transform .2s ease, background .2s ease; }
 .btn-gold:hover { transform: translateY(-2px); background: #D2C27A !important; }
+.copy { transition: background .2s ease, color .2s ease, transform .15s ease; }
+.copy:hover { background: #2A4D38 !important; color: #FAF7EE !important; }
+.copy:active { transform: scale(.96); }
+.wa { transition: transform .2s ease, box-shadow .2s ease; }
+.wa:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -16px rgba(22,163,74,.6); }
+@keyframes glow { 0%,100% { box-shadow: 0 0 0 0 rgba(181,164,92,.55); } 50% { box-shadow: 0 0 0 10px rgba(181,164,92,0); } }
+.now { animation: glow 2s ease-in-out infinite; }
 .btn-line { transition: background .2s ease, color .2s ease; }
 .btn-line:hover { background: #2A4D38 !important; color: #FAF7EE !important; }
 @keyframes pop { 0% { transform: scale(.4); opacity: 0; } 70% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
@@ -57,7 +65,7 @@ button { font-family: inherit; cursor: pointer; }
       <span class="hide-m" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>استلام من المعرض أو توصيل لحد باب البيت</span>
     </div>
     <div style="display:flex;gap:20px;align-items:center">
-      <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>[رقم الهاتف]</span>
+      <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-phone-text="1" style="font-family:'Outfit',sans-serif;direction:ltr">01000000000</span></span>
       <span style="border:1px solid rgba(181,164,92,.5);border-radius:999px;padding:2px 12px;font-family:'Outfit',sans-serif;font-weight:700;font-size:13px">EN</span>
     </div>
   </div>
@@ -93,9 +101,8 @@ button { font-family: inherit; cursor: pointer; }
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">أجهزة مطبخ</a>
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">أدوات منزلية</a>
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:700;color:#FF9B7A">عروض الفلاش</a>
-      <a class="navlink" href="index.html" style="padding:14px 16px;white-space:nowrap;font-weight:700;color:#D2C27A">تجهيز العرايس</a>
       <a class="navlink" href="login.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">للتجار</a>
-      <a class="navlink" href="index.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">من نحن</a>
+      <a class="navlink" href="index.html#about" style="padding:14px 16px;white-space:nowrap;font-weight:500">من نحن</a>
     </div>
   </nav>
 </header>
@@ -109,10 +116,10 @@ button { font-family: inherit; cursor: pointer; }
       <div class="pop" style="position:absolute;inset:0;border-radius:50%;background:#B5A45C;color:#14201A;display:flex;align-items:center;justify-content:center"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
     </div>
     <h1 style="margin:0;font-family:'Lalezar',sans-serif;font-weight:400;font-size:clamp(48px,7vw,96px);line-height:1">تم استلام <span style="color:#D2C27A">طلبك</span></h1>
-    <p style="margin:0;font-size:20px;line-height:1.9;color:#C9D5C6;max-width:560px">شكراً لثقتك في محمد سراج. هنكلمك قريب لتأكيد الطلب، وبعتنالك تفاصيله على إيميلك.</p>
+    <p style="margin:0;font-size:20px;line-height:1.9;color:#C9D5C6;max-width:560px">شكراً لثقتك في محمد سراج. {{heroText}}</p>
     <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
-      <div style="background:rgba(250,247,238,.08);border:1px solid rgba(250,247,238,.2);border-radius:22px;padding:14px 28px"><div style="font-size:13px;color:#C9D5C6">رقم الطلب</div><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;color:#D2C27A">SR-2026-0124</div></div>
-      <div style="background:rgba(250,247,238,.08);border:1px solid rgba(250,247,238,.2);border-radius:22px;padding:14px 28px"><div style="font-size:13px;color:#C9D5C6">طريقة الدفع</div><div style="font-weight:700;font-size:20px;margin-top:4px">الدفع عند الاستلام</div></div>
+      <div style="background:rgba(250,247,238,.08);border:1px solid rgba(250,247,238,.2);border-radius:22px;padding:14px 28px"><div style="font-size:13px;color:#C9D5C6">رقم الطلب</div><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;color:#D2C27A">{{orderNo}}</div></div>
+      <div style="background:rgba(250,247,238,.08);border:1px solid rgba(250,247,238,.2);border-radius:22px;padding:14px 28px"><div style="font-size:13px;color:#C9D5C6">طريقة الدفع</div><div style="font-weight:700;font-size:20px;margin-top:4px">{{payLabel}}</div></div>
     </div>
   </div>
 </section>
@@ -126,19 +133,46 @@ button { font-family: inherit; cursor: pointer; }
         <div style="display:flex;gap:14px;align-items:center"><div style="width:58px;height:58px;border-radius:16px;background:#F4F1E6;color:#2A4D38;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 48 48" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="4" width="30" height="40" rx="4"></rect><circle cx="24" cy="28" r="10"></circle><circle cx="24" cy="28" r="5"></circle><path d="M15 11h8M31 11h2"></path></svg></div><div style="flex:1;font-size:15px;line-height:1.5">غسالة أوتوماتيك فتحة أمامية 8 كجم <span style="color:#8A918C">× 1</span></div></div>
         <div style="display:flex;gap:14px;align-items:center"><div style="width:58px;height:58px;border-radius:16px;background:#F4F1E6;color:#2A4D38;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 48 48" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="40" height="27" rx="3"></rect><path d="M16 42h16M24 35v7"></path></svg></div><div style="flex:1;font-size:15px;line-height:1.5">شاشة سمارت 55 بوصة 4K <span style="color:#8A918C">× 1</span></div></div>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed #D8D0B4;padding-top:18px"><span style="font-weight:700;font-size:18px">الإجمالي</span><span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:32px;color:#2A4D38;line-height:1">75,300 <span style="font-size:15px;font-family:'IBM Plex Sans Arabic',sans-serif;color:#14201A">ج.م</span></span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed #D8D0B4;padding-top:18px"><span style="font-weight:700;font-size:18px">عند الاستلام</span><span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:32px;color:#2A4D38;line-height:1">{{subtotal}} <span style="font-size:15px;font-family:'IBM Plex Sans Arabic',sans-serif;color:#14201A">ج.م</span></span></div>
     </div>
 
     <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:18px">
-      <div style="font-family:'Lalezar',sans-serif;font-size:32px;color:#2A4D38;line-height:1">إيه اللي هيحصل دلوقتي؟</div>
-      <div style="display:flex;gap:16px;align-items:flex-start"><span style="width:42px;height:42px;border-radius:50%;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;flex:none">1</span><div><div style="font-weight:700;font-size:18px">تأكيد الطلب</div><div style="font-size:15px;color:#5B665F;margin-top:4px;line-height:1.7">فريقنا هيتواصل معاك لتأكيد البيانات.</div></div></div>
-      <div style="display:flex;gap:16px;align-items:flex-start"><span style="width:42px;height:42px;border-radius:50%;background:#B5A45C;color:#14201A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;flex:none">2</span><div><div style="font-weight:700;font-size:18px">تجهيز وفحص</div><div style="font-size:15px;color:#5B665F;margin-top:4px;line-height:1.7">بنجهّز طلبك ونفحصه قبل الشحن.</div></div></div>
-      <div style="display:flex;gap:16px;align-items:flex-start"><span style="width:42px;height:42px;border-radius:50%;border:2px solid #D8D0B4;color:#5B665F;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;flex:none">3</span><div><div style="font-weight:700;font-size:18px">استلام ودفع</div><div style="font-size:15px;color:#5B665F;margin-top:4px;line-height:1.7">تستلم من المعرض أو بنوصّله، وتدفع عند الاستلام.</div></div></div>
+      <div style="font-family:'Lalezar',sans-serif;font-size:32px;color:#2A4D38;line-height:1">{{stepsTitle}}</div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:22px">
+        <div style="position:absolute;top:22px;bottom:22px;right:21px;width:2px;background:linear-gradient(#2A4D38,#B5A45C,#D8D0B4)"></div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start"><span class="" style="width:44px;height:44px;border-radius:50%;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;flex:none;position:relative;z-index:1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><div style="padding-top:2px"><div style="font-weight:700;font-size:18px">الطلب اتسجّل</div><div style="font-size:15px;color:#5B665F;margin-top:4px;line-height:1.7">رقم طلبك <b style="font-family:'Outfit',sans-serif;color:#2A4D38">{{orderNo}}</b>، احتفظ بيه.</div></div></div>
+
+        <sc-if value="{{isDelivery}}" hint-placeholder-val="{{true}}">
+          <div style="display:flex;gap:16px;align-items:flex-start"><span class="now" style="width:44px;height:44px;border-radius:50%;background:#B5A45C;color:#14201A;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;flex:none;position:relative;z-index:1">2</span>
+            <div style="flex:1;min-width:0;background:#fff;border:2px solid #B5A45C;border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline"><div style="font-weight:700;font-size:18px">حوّل مصاريف الشحن</div><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;color:#2A4D38;line-height:1">{{shipCost}} <span style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:13px">ج.م</span></div></div>
+              <div style="font-size:14px;color:#5B665F;line-height:1.6">{{methodHint}}</div>
+              <div style="display:flex;align-items:center;gap:10px;background:#FAF7EE;border:1.5px dashed #B5A45C;border-radius:16px;padding:8px 8px 8px 8px">
+                <span style="font-size:13px;color:#6F6329;font-weight:700;padding-inline:8px;white-space:nowrap">{{methodName}}</span>
+                <span style="flex:1;min-width:0;font-family:'Outfit',sans-serif;font-weight:800;font-size:19px;direction:ltr;text-align:center;overflow:hidden;text-overflow:ellipsis">{{account}}</span>
+                <button type="button" class="copy" onClick="{{copyAccount}}" style="border:0;background:{{copyBg}};color:{{copyFg}};border-radius:12px;padding:10px 16px;font-weight:700;font-size:14px;white-space:nowrap">{{copyLabel}}</button>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" onClick="{{pickOther0}}" style="border:1.5px solid #E4DDC6;background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:#3C4840">أو ادفع بـ {{other0}}</button><button type="button" onClick="{{pickOther1}}" style="border:1.5px solid #E4DDC6;background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:#3C4840">أو ادفع بـ {{other1}}</button></div>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;gap:16px;align-items:flex-start"><span class="" style="width:44px;height:44px;border-radius:50%;background:{{waDotBg}};color:{{waDotFg}};display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;flex:none;position:relative;z-index:1">{{waStepNo}}</span>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:12px">
+            <div><div style="font-weight:700;font-size:18px">{{waTitle}}</div><div style="font-size:15px;color:#5B665F;margin-top:4px;line-height:1.7">{{waSub}}</div></div>
+            <a class="wa" href="{{waLink}}" target="_blank" rel="noopener" style="height:58px;border-radius:999px;background:#16A34A;color:#fff;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;gap:12px"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>{{waBtn}}</a>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start"><span class="" style="width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid #D8D0B4;color:#5B665F;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;flex:none;position:relative;z-index:1">{{lastStepNo}}</span><div style="padding-top:2px"><div style="font-weight:700;font-size:18px">{{lastTitle}}</div><div style="font-size:15px;color:#5B665F;margin-top:4px;line-height:1.7">{{lastSub}}</div></div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;background:#E9F0E8;border-radius:18px;padding:14px 16px;font-size:14px;color:#2A4D38;font-weight:600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>هنكلمك خلال ساعة في مواعيد العمل لتأكيد ميعاد التوصيل.</div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:10px">
-        <a class="btn-gold" href="account.html" style="flex:1 1 200px;height:56px;border-radius:999px;background:#B5A45C;color:#14201A;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center">تتبّع طلبك</a>
+        <a class="btn-gold" href="account.html" data-track-order="1" style="flex:1 1 200px;height:56px;border-radius:999px;background:#B5A45C;color:#14201A;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center">تتبّع طلبك</a>
         <a class="btn-line" href="shop.html" style="flex:1 1 200px;height:56px;border-radius:999px;border:1.5px solid #2A4D38;color:#2A4D38;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center">كمّل تسوّق</a>
       </div>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;color:#2A4D38;font-weight:700;font-size:16px;align-self:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.7 7L4 20l1.1-4.1A8 8 0 1 1 20 12z"></path></svg>محتاج مساعدة؟ كلمنا واتساب</a>
+      
     </div>
   </div>
 </section>
@@ -160,12 +194,12 @@ button { font-family: inherit; cursor: pointer; }
       </div>
       <div style="flex:1 1 160px;display:flex;flex-direction:column;gap:12px;font-size:16px">
         <div style="font-weight:700;font-size:18px;color:#FAF7EE;margin-bottom:6px">خدمة العملاء</div>
-        <a class="navlink" href="account.html">تتبع طلبك</a><a class="navlink" href="index.html">سياسة الاسترجاع</a><a class="navlink" href="index.html">الشروط والأحكام</a><a class="navlink" href="index.html">الأسئلة الشائعة</a>
+        <a class="navlink" href="#track" data-track-order="1">تتبع طلبك</a><a class="navlink" href="#policy-return" data-article="policy-return">سياسة الاسترجاع</a><a class="navlink" href="#policy-terms" data-article="policy-terms">الشروط والأحكام</a><a class="navlink" href="#policy-faq" data-article="policy-faq">الأسئلة الشائعة</a>
       </div>
       <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:12px;font-size:16px">
         <div style="font-weight:700;font-size:18px;color:#FAF7EE;margin-bottom:6px">تواصل معانا</div>
         <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>المنصورة، مصر</div>
-        <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>[رقم الهاتف]</div>
+        <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-phone-text="1" style="font-family:'Outfit',sans-serif;direction:ltr">01000000000</span></div>
         <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span style="font-family:'Outfit',sans-serif">serag.co</span></div>
       </div>
     </div>
@@ -181,8 +215,59 @@ button { font-family: inherit; cursor: pointer; }
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
 class Component extends DCLogic {
+  fmt(n) { return Number(n).toLocaleString('en-US'); }
+  componentDidMount() {
+    let o = null;
+    try { o = JSON.parse(localStorage.getItem('serag_order') || 'null'); } catch (e) {}
+    this.setState({ o: o || { no: 'SR-2026-0124', ship: 'delivery', zone: 0, method: 'instapay', shipCost: window.SERAG.zones[0].price, subtotal: 75300, items: ['ثلاجة نوفروست بابين 450 لتر', 'غسالة أوتوماتيك فتحة أمامية 8 كجم', 'شاشة سمارت 55 بوصة 4K'] } });
+  }
   renderVals() {
-    return {};
+    const C = window.SERAG;
+    const st = this.state || {};
+    const o = st.o || { no: '…', ship: 'delivery', zone: 0, method: 'instapay', shipCost: C.zones[0].price, subtotal: 75300, items: [] };
+    const method = st.method || o.method;
+    const m = C.pay[method];
+    const del = o.ship === 'delivery';
+    const zone = C.zones[o.zone] || C.zones[0];
+    const msg = del
+      ? `السلام عليكم، ده إثبات تحويل مصاريف الشحن 🧾\nرقم الطلب: ${o.no}\nالمنتجات: ${o.items.join(' + ')}\nالشحن (${zone.name}): ${this.fmt(o.shipCost)} ج.م عن طريق ${m.name}\nالمطلوب عند الاستلام: ${this.fmt(o.subtotal)} ج.م\n\n(مرفق صورة التحويل)`
+      : `السلام عليكم، عايز أأكد طلب الاستلام من المعرض\nرقم الطلب: ${o.no}\nالمنتجات: ${o.items.join(' + ')}\nالإجمالي: ${this.fmt(o.subtotal)} ج.م`;
+    const copied = st.copied === method;
+    const others = Object.keys(C.pay).filter(k => k !== method);
+    const R = window.React;
+    return {
+      orderNo: o.no,
+      isDelivery: del,
+      heroText: del ? 'فاضل خطوة صغيرة: حوّل مصاريف الشحن وابعتلنا الإثبات على واتساب، وطلبك يتحجز فوراً.' : 'هنجهّز طلبك في المعرض، أكّد معانا على واتساب وتعالى استلم.',
+      payLabel: del ? 'شحن مقدّم + الباقي عند الاستلام' : 'الدفع في المعرض',
+      stepsTitle: del ? 'كمّل طلبك في دقيقة' : 'إيه اللي هيحصل دلوقتي؟',
+      shipCost: this.fmt(o.shipCost),
+      subtotal: this.fmt(o.subtotal),
+      methodName: m.name,
+      methodHint: m.hint,
+      account: m.account,
+      copyLabel: copied ? 'اتنسخ ✓' : 'انسخ',
+      copyBg: copied ? '#16A34A' : '#E9F0E8',
+      copyFg: copied ? '#fff' : '#2A4D38',
+      copyAccount: () => {
+        const done = () => { this.setState({ copied: method }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: null }), 2000); };
+        if (navigator.clipboard) navigator.clipboard.writeText(m.account).then(done, done); else done();
+      },
+      other0: C.pay[others[0]].name,
+      other1: C.pay[others[1]].name,
+      pickOther0: () => this.setState({ method: others[0], copied: null }),
+      pickOther1: () => this.setState({ method: others[1], copied: null }),
+      waDotBg: del ? '#FAF7EE' : '#B5A45C',
+      waDotFg: del ? '#6F6329' : '#14201A',
+      waStepNo: del ? '3' : '2',
+      waTitle: del ? 'ابعت صورة التحويل على واتساب' : 'أكّد طلبك على واتساب',
+      waSub: del ? 'الرسالة جاهزة فيها كل تفاصيل طلبك، إنت بس ارفق صورة التحويل واضغط إرسال.' : 'الرسالة جاهزة فيها تفاصيل طلبك، اضغط إرسال بس.',
+      waBtn: del ? 'ابعت الإثبات على واتساب' : 'أكّد على واتساب',
+      waLink: C.waLink(msg),
+      lastStepNo: del ? '4' : '3',
+      lastTitle: del ? 'استلم وادفع الباقي' : 'تعالى استلم',
+      lastSub: del ? `المندوب يوصلّك لحد البيت، تعاين الجهاز وتدفع ${this.fmt(o.subtotal)} ج.م كاش.` : `من معرضنا في المنصورة، وتدفع ${this.fmt(o.subtotal)} ج.م.`
+    };
   }
 }
 </script>

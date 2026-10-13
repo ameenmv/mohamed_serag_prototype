@@ -7,6 +7,7 @@
 <script src="./vendor/react.js"></script>
 <script src="./vendor/react-dom.js"></script>
 <script src="./support.js"></script>
+<script src="./config.js"></script>
 </head>
 <body>
 <x-dc>
@@ -52,7 +53,7 @@ input, select, textarea { font-family: inherit; }
       <span class="hide-m" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>استلام من المعرض أو توصيل لحد باب البيت</span>
     </div>
     <div style="display:flex;gap:20px;align-items:center">
-      <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>[رقم الهاتف]</span>
+      <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-phone-text="1" style="font-family:'Outfit',sans-serif;direction:ltr">01000000000</span></span>
       <span style="border:1px solid rgba(181,164,92,.5);border-radius:999px;padding:2px 12px;font-family:'Outfit',sans-serif;font-weight:700;font-size:13px">EN</span>
     </div>
   </div>
@@ -88,9 +89,8 @@ input, select, textarea { font-family: inherit; }
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">أجهزة مطبخ</a>
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">أدوات منزلية</a>
       <a class="navlink" href="shop.html" style="padding:14px 16px;white-space:nowrap;font-weight:700;color:#FF9B7A">عروض الفلاش</a>
-      <a class="navlink" href="index.html" style="padding:14px 16px;white-space:nowrap;font-weight:700;color:#D2C27A">تجهيز العرايس</a>
       <a class="navlink" href="login.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">للتجار</a>
-      <a class="navlink" href="index.html" style="padding:14px 16px;white-space:nowrap;font-weight:500">من نحن</a>
+      <a class="navlink" href="index.html#about" style="padding:14px 16px;white-space:nowrap;font-weight:500">من نحن</a>
     </div>
   </nav>
 </header>
@@ -112,12 +112,12 @@ input, select, textarea { font-family: inherit; }
       <div style="position:relative;overflow:hidden;background:#16291E;color:#FAF7EE;border-radius:30px;padding:28px;display:flex;flex-direction:column;gap:18px">
         <div style="position:absolute;top:-100px;left:-100px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(181,164,92,.3) 0%,rgba(181,164,92,0) 65%)"></div>
         <div style="position:relative;display:flex;gap:16px;align-items:center">
-          <div style="width:64px;height:64px;border-radius:50%;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Lalezar',sans-serif;font-size:30px;box-shadow:inset 0 0 0 2px rgba(210,194,122,.5)">م</div>
-          <div><div style="font-size:14px;color:#C9D5C6">أهلاً بيك</div><div style="font-weight:700;font-size:20px">[اسم العميل]</div></div>
+          <div style="width:64px;height:64px;border-radius:50%;background:#2A4D38;color:#D2C27A;display:flex;align-items:center;justify-content:center;font-family:'Lalezar',sans-serif;font-size:30px;box-shadow:inset 0 0 0 2px rgba(210,194,122,.5)">أ</div>
+          <div><div style="font-size:14px;color:#C9D5C6">أهلاً بيك</div><div style="font-weight:700;font-size:20px">أحمد محمد</div></div>
         </div>
         <div style="position:relative;background:rgba(250,247,238,.08);border:1px solid rgba(250,247,238,.16);border-radius:20px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center">
           <span style="font-size:14px;color:#C9D5C6">نقاط الولاء</span>
-          <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;color:#D2C27A">[000]</span>
+          <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;color:#D2C27A">1,250</span>
         </div>
       </div>
 
@@ -178,8 +178,8 @@ input, select, textarea { font-family: inherit; }
         <div style="display:flex;flex-direction:column;gap:24px">
           <h1 style="margin:0;font-family:'Lalezar',sans-serif;font-weight:400;font-size:clamp(38px,4.6vw,56px);line-height:1;color:#2A4D38">عناويني</h1>
           <div style="display:flex;flex-wrap:wrap;gap:20px">
-            <div style="flex:1 1 280px;background:#fff;border:2px solid #2A4D38;border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:18px">البيت</b><span style="background:#E9F0E8;color:#2A4D38;font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px">الأساسي</span></div><div style="font-size:16px;line-height:1.8;color:#3C4840">[العنوان بالتفصيل]<br>الدقهلية، المنصورة</div></div>
-            <div style="flex:1 1 280px;background:#fff;border:1px solid #E7E0C8;border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:10px"><b style="font-size:18px">الشغل</b><div style="font-size:16px;line-height:1.8;color:#3C4840">[العنوان بالتفصيل]<br>[المحافظة، المدينة]</div></div>
+            <div style="flex:1 1 280px;background:#fff;border:2px solid #2A4D38;border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:18px">البيت</b><span style="background:#E9F0E8;color:#2A4D38;font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px">الأساسي</span></div><div style="font-size:16px;line-height:1.8;color:#3C4840">شارع الجمهورية، بجوار الجامعة، برج النور، الدور 4<br>الدقهلية، المنصورة</div></div>
+            <div style="flex:1 1 280px;background:#fff;border:1px solid #E7E0C8;border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:10px"><b style="font-size:18px">الشغل</b><div style="font-size:16px;line-height:1.8;color:#3C4840">شارع المشاية السفلية، عمارة 12، الدور 2<br>الدقهلية، المنصورة</div></div>
             <button type="button" style="flex:1 1 280px;min-height:140px;border:2px dashed #D8D0B4;background:transparent;border-radius:28px;color:#2A4D38;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>أضف عنوان جديد</button>
           </div>
         </div>
@@ -189,9 +189,9 @@ input, select, textarea { font-family: inherit; }
         <div style="display:flex;flex-direction:column;gap:24px">
           <h1 style="margin:0;font-family:'Lalezar',sans-serif;font-weight:400;font-size:clamp(38px,4.6vw,56px);line-height:1;color:#2A4D38">بياناتي</h1>
           <div style="background:#fff;border:1px solid #E7E0C8;border-radius:30px;padding:30px;display:flex;flex-wrap:wrap;gap:16px">
-            <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">الاسم<input class="field" type="text" placeholder="[اسم العميل]" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
-            <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">رقم الموبايل<input class="field" type="tel" placeholder="01xxxxxxxxx" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
-            <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">البريد الإلكتروني<input class="field" type="email" placeholder="name@email.com" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+            <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">الاسم<input class="field" type="text" placeholder="أحمد محمد" value="أحمد محمد" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+            <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">رقم الموبايل<input class="field" type="tel" placeholder="01012345678" value="01012345678" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
+            <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">البريد الإلكتروني<input class="field" type="email" placeholder="ahmed@example.com" value="ahmed@example.com" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
             <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">كلمة المرور الجديدة<input class="field" type="password" placeholder="••••••••" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
             <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px">تأكيد كلمة المرور<input class="field" type="password" placeholder="••••••••" style="border:1.5px solid #E4DDC6;border-radius:16px;padding:15px 18px;font-size:16px;background:#FAF7EE;outline:none;color:#14201A"></label>
             <button class="btn-gold" type="button" style="margin-top:8px;height:54px;padding:0 40px;border:0;border-radius:999px;background:#B5A45C;color:#14201A;font-weight:700;font-size:17px">حفظ التعديلات</button>
@@ -203,13 +203,13 @@ input, select, textarea { font-family: inherit; }
         <div style="display:flex;flex-direction:column;gap:24px">
           <h1 style="margin:0;font-family:'Lalezar',sans-serif;font-weight:400;font-size:clamp(38px,4.6vw,56px);line-height:1;color:#2A4D38">نقاط الولاء</h1>
           <div style="position:relative;overflow:hidden;background:#B5A45C;color:#14201A;border-radius:34px;padding:38px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
-            <div><div style="font-size:16px;font-weight:600">رصيدك الحالي</div><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:72px;line-height:1">[000]</div><div style="font-size:15px;margin-top:6px;color:#2F2A10">نقطة</div></div>
-            <div style="max-width:340px;font-size:16px;line-height:1.9;color:#2F2A10">كل عملية شراء بتضيف نقاط لحسابك، وتقدر تستبدلها بخصم على مشترياتك الجاية. [اكتب قواعد برنامج الولاء هنا].</div>
+            <div><div style="font-size:16px;font-weight:600">رصيدك الحالي</div><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:72px;line-height:1">1,250</div><div style="font-size:15px;margin-top:6px;color:#2F2A10">نقطة (تعادل 625 ج.م خصم فوري)</div></div>
+            <div style="max-width:360px;font-size:16px;line-height:1.9;color:#2F2A10">كل 100 ج.م مشتريات بتضيف لحسابك نقطة ولاء، وتقدر تستبدل كل 500 نقطة بخصم فوري 250 ج.م على أي طلب جديد من الموقع أو المعرض.</div>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:18px">
-            <div style="flex:1 1 220px;background:#fff;border:1px solid #E7E0C8;border-radius:26px;padding:24px"><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;color:#2A4D38">1</div><div style="font-weight:700;margin-top:8px">اشتري</div><div style="font-size:14px;color:#5B665F;margin-top:4px;line-height:1.7">كل طلب بيجمّع نقاط.</div></div>
-            <div style="flex:1 1 220px;background:#fff;border:1px solid #E7E0C8;border-radius:26px;padding:24px"><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;color:#2A4D38">2</div><div style="font-weight:700;margin-top:8px">اجمع</div><div style="font-size:14px;color:#5B665F;margin-top:4px;line-height:1.7">رصيدك بيظهر هنا.</div></div>
-            <div style="flex:1 1 220px;background:#fff;border:1px solid #E7E0C8;border-radius:26px;padding:24px"><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;color:#2A4D38">3</div><div style="font-weight:700;margin-top:8px">استبدل</div><div style="font-size:14px;color:#5B665F;margin-top:4px;line-height:1.7">خصم على طلبك الجاي.</div></div>
+            <div style="flex:1 1 220px;background:#fff;border:1px solid #E7E0C8;border-radius:26px;padding:24px"><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;color:#2A4D38">1</div><div style="font-weight:700;margin-top:8px">اشتري</div><div style="font-size:14px;color:#5B665F;margin-top:4px;line-height:1.7">كل طلب بيجمّع نقاط تلقائياً بعد الاستلام.</div></div>
+            <div style="flex:1 1 220px;background:#fff;border:1px solid #E7E0C8;border-radius:26px;padding:24px"><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;color:#2A4D38">2</div><div style="font-weight:700;margin-top:8px">اجمع</div><div style="font-size:14px;color:#5B665F;margin-top:4px;line-height:1.7">رصيدك التراكمي بيظهر هنا في حسابك.</div></div>
+            <div style="flex:1 1 220px;background:#fff;border:1px solid #E7E0C8;border-radius:26px;padding:24px"><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;color:#2A4D38">3</div><div style="font-weight:700;margin-top:8px">استبدل</div><div style="font-size:14px;color:#5B665F;margin-top:4px;line-height:1.7">خصم فوري على طلبك الجاي بضغطة واحدة.</div></div>
           </div>
         </div>
       </sc-if>
@@ -234,12 +234,12 @@ input, select, textarea { font-family: inherit; }
       </div>
       <div style="flex:1 1 160px;display:flex;flex-direction:column;gap:12px;font-size:16px">
         <div style="font-weight:700;font-size:18px;color:#FAF7EE;margin-bottom:6px">خدمة العملاء</div>
-        <a class="navlink" href="account.html">تتبع طلبك</a><a class="navlink" href="index.html">سياسة الاسترجاع</a><a class="navlink" href="index.html">الشروط والأحكام</a><a class="navlink" href="index.html">الأسئلة الشائعة</a>
+        <a class="navlink" href="#track" data-track-order="1">تتبع طلبك</a><a class="navlink" href="#policy-return" data-article="policy-return">سياسة الاسترجاع</a><a class="navlink" href="#policy-terms" data-article="policy-terms">الشروط والأحكام</a><a class="navlink" href="#policy-faq" data-article="policy-faq">الأسئلة الشائعة</a>
       </div>
       <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:12px;font-size:16px">
         <div style="font-weight:700;font-size:18px;color:#FAF7EE;margin-bottom:6px">تواصل معانا</div>
         <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>المنصورة، مصر</div>
-        <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>[رقم الهاتف]</div>
+        <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-phone-text="1" style="font-family:'Outfit',sans-serif;direction:ltr">01000000000</span></div>
         <div style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D2C27A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span style="font-family:'Outfit',sans-serif">serag.co</span></div>
       </div>
     </div>
